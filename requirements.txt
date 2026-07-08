@@ -9,3 +9,5 @@ netCDF4
 zarr
 geopandas
 gunicorn
+cmcrameri
+dask
