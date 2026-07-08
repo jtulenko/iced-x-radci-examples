@@ -61,7 +61,7 @@ def rsl_plot(rsl_plot):
     p.segment(x0=calmin, y0=elev_max, x1=calmax, y1=elev_max, line_width=1, line_color='#d3d3d3')
     p.segment(x0=calmin, y0=elev_min, x1=calmin, y1=elev_max, line_width=1, line_color='#d3d3d3')
     p.segment(x0=calmax, y0=elev_min, x1=calmax, y1=elev_max, line_width=1, line_color='#d3d3d3')
-    scatter = p.scatter(x='x', y='y', size=10, source=data, fill_alpha=0, line_alpha=0)
+    scatter = p.scatter(x='x', y='y', size=20, source=data, fill_alpha=0, line_alpha=0)
     p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Sample name", "@sample")]))
 
 
