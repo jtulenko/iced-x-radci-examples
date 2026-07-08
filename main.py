@@ -9,6 +9,20 @@ def home():
     
     return render_template('home.html')
 
+@app.route('/radciexamples', methods=["GET", "POST"])
+def radciexamples():
+    script1,div1 = "", ""
+
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "rsl_plot":
+            rsl_site = str(request.form.get("rsl_site"))
+
+            script1, div1 = plotting.rsl_plot(rsl_site)
+
+    return render_template('radciexamples.html', script1=script1, div1=div1)
+
 @app.route('/sealevel', methods=["GET", "POST"])
 def sealevel():
     script1,div1 = "",""

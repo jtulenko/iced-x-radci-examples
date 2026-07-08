@@ -19,6 +19,39 @@ import json
 from cmcrameri import cm
 import gc
 
+import dbconnect
+
+def rsl_plot(rsl_plot):
+    rsl_plot = rsl_plot
+
+    rsl_plot_query = """SELECT base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, maxage_1sd_calyrBP, base_rsl_info.sealevel_index_elev_m, base_rsl_info.sealevel_index_elev_m_err
+        FROM base_sample
+        LEFT JOIN base_calibratedage ON base_sample.id = base_calibratedage.sample_id
+        LEFT JOIN base_rsl_info ON base_sample.id = base_rsl_info.sample_id
+        LEFT JOIN base_rsl_site ON base_rsl_site.id = base_rsl_info.rsl_site_id
+        WHERE base_rsl_site.name LIKE "%{rsl_plot}%"
+        AND base_calibratedage.reservoir_corr_id = 1"""
+    
+    site_result = dbconnect.querier_radci(rsl_plot_query)
+
+    sample = site_result[1:,0]
+    calage = site_result[1:,1]
+    calmin = site_result[1:,2]
+    calmax = site_result[1:,3]
+    elev = site_result[1:,4]
+    elev_err = site_result[1:,5]
+    elev_min = elev - elev_err
+    elev_max = elev + elev_err
+
+    p = figure(title=f"{rsl_plot} RSL Site", width=855, height=540, x_axis_label="Cal yr BP", y_axis_label="Elevation (m)", tools="pan,wheel_zoom,save,reset", x_range=((numpy.min(calmin) * 0.9), (numpy.max(calmax)*1.1)), y_range=((numpy.min(elev_min) * 0.9), (numpy.max(elev_max)*1.1)))
+    p.scatter(x=calage, y=elev, size=4)
+    p.segment(x0=calage, y0=elev_min, x1=calage, y1=elev_max, line_width=2)
+    p.segment(x0=calmin, y0=elev, x1=calmax, y1=elev, line_width=2)
+
+    plot_script, plot_div = components(p)
+
+    return components(p)
+
 def get_shoreline():
 
     with open("static/world_shoreline.geojson", "r") as f:
