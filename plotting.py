@@ -43,7 +43,7 @@ def rsl_plot(rsl_plot):
     elev_min = elev - elev_err
     elev_max = elev + elev_err
 
-    p = figure(title=f"{rsl_plot} RSL Site", width=855, height=540, x_axis_label="Cal yr BP", y_axis_label="Elevation (m)", tools="pan,wheel_zoom,save,reset")#, x_range=((min(calmin) * 0.9), (max(calmax)*1.1)), y_range=((min(elev_min) * 0.9), (max(elev_max)*1.1)))
+    p = figure(title=f"{rsl_plot} RSL Site", width=855, height=540, x_axis_label="Cal yr BP", y_axis_label="Elevation (m)", tools="pan,wheel_zoom,save,reset", x_range=((min(calmin) * 0.9), (max(calmax)*1.1)), y_range=((min(elev_min) * 0.9), (max(elev_max)*1.1)))
     p.scatter(x=calage, y=elev, size=4)
     p.segment(x0=calage, y0=elev_min, x1=calage, y1=elev_max, line_width=2)
     p.segment(x0=calmin, y0=elev, x1=calmax, y1=elev, line_width=2)
