@@ -35,11 +35,11 @@ def rsl_plot(rsl_plot):
     site_result = dbconnect.querier_radci(rsl_plot_query)
 
     sample = site_result[1:,0]
-    calage = site_result[1:,1]
-    calmin = site_result[1:,2]
-    calmax = site_result[1:,3]
-    elev = site_result[1:,4]
-    elev_err = site_result[1:,5]
+    calage = site_result[1:,1].astype(float)
+    calmin = site_result[1:,2].astype(float)
+    calmax = site_result[1:,3].astype(float)
+    elev = site_result[1:,4].astype(float)
+    elev_err = site_result[1:,5].astype(float)
     elev_min = elev - elev_err
     elev_max = elev + elev_err
 
