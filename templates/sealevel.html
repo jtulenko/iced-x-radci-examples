@@ -1,0 +1,183 @@
+<!doctype html>
+<!--
+ Copyright 2021 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>GIA Machine - SEA LEVEL</title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="https://storage.googleapis.com/giamachine_output_data/giamachinefavicon.png" type="image/png">
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.7.3.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+</head>
+<body>
+  <table width = 100%, border = "1", class="table_alt">
+    <tr>
+      <td align="left" width="30%"><a href='/'><img alt="giamachinelogo" src="https://storage.googleapis.com/giamachine_output_data/giamachinelogo.png" style="border-width:10px;border-style:hidden;margin:10px;width:100%;" /></a></td>
+      <td align="right" width="70%"><h1>GIA Machine Sea Level Page</h1>
+      <br>
+      <p style="margin: 18px;">powered by:</p>
+      <a href="https://theghub.org" target="_blank"><img alt="ghublogo" src="https://storage.googleapis.com/giamachine_output_data/ghublogo.png" style="width: 150px"></a>
+      </td>
+    </tr>
+  </table>
+
+  <table width = 100%, border = "1">
+    <tr>
+      <p align="left"><a href="/">Home</a> | <a href= "/sealevel">Sea Level</a> | <a href= "/deformation">Deformation</a> | <a href= "/velocity">Velocity</a> | <a href= "/gravity">Gravity</a> | <a href= "/stress">Stress</a> | <a href= "/rotation">Rotation</a> | <a href= "/topography">Topography</a> | <a href= "/feedback">Feedback</a></p>
+    </tr>
+  </table>
+
+  <table width = 100%, border="1">
+    <td>
+    <h3>Sea Level reconstructions</h3>
+    <p> Choose from a select list of published sea level histories ranging from x-x ka and subset by Lat-Lon</p>
+    </td>
+  </table>
+  <table width = 100%, border="1", height = 600px>
+    <td width=895px, valign="top", halign="left">
+        <table>
+          <tr><td align=center><div> {{script1 | safe}} {{ div1 | safe }} </div></td></tr>
+        </table>
+    </td>
+    <td width=295px, valign="top", halign="right">
+        <table width=300px>
+          <tr><td><b>Map plot variables</b></td></tr>
+          <tr><td align=center>
+          <br>
+          <br>
+          <form method="post">
+            <label for="rsl_recon">Recon:</label>
+            <select name="rsl_recon">
+              <option value="" disabled selected>----</option>
+              <option value="aust21VM">Aust21 VM</option>
+              <option value="aust21p5">Aust21 p5</option>
+              <option value="aust22LAM_PC">Aust22 LAM PC</option>
+              <option value="creel24_a">Creel24 a</option>
+            </select><br><br>
+            <label>Lat min: <input name="lat_min" type="text" value="-90" style="width: 60px"></label><br><br>
+            <label>Lat max: <input name="lat_max" type="text" value="90" style="width: 60px"></label><br><br>
+            <label>Lon min: <input name="lon_min" type="text" value="-180" style="width: 60px"></label><br><br>
+            <label>Lon max: <input name="lon_max" type="text" value="180" style="width: 60px"></label><br><br>
+            <label for="age_slider">Select Age (ka):</label>
+            <input type="range" id="age_slider" name="age_slider" min="0" max="400" step="1" value="0" oninput="ageOutput.value = this.value"><br>
+            <output name="ageOutput" id="ageOutput">0</output><br><br>
+            <label>RSL max (m): <input name="rsl_max" type="text" value="100" style="width: 60px"></label><br><br>
+            <label>RSL min (m): <input name="rsl_min" type="text" value="-100" style="width: 60px"></label><br><br>
+
+            <button type="submit" name="action" value="map_plot">Generate Plot</button>
+          </form>
+          <form method="get" action="/sealevel" style="margin-top: 1em;">
+            <input type="submit" value="Reset">
+          </form>
+        
+          </td></tr>
+        </table>
+
+    </td>
+  </table>
+  <table width = 100%, border="1", height = 600px>
+    <td width=895px, valign="top", halign="left">
+        <table>
+          <tr><td align=center><div> {{script2 | safe}} {{ div2 | safe }} </div></td></tr>
+        </table>
+    </td>
+    <td width=295px, valign="top", halign="right">
+        <table width=300px>
+          <tr><td><b>Time series variables</b></td></tr>
+          <tr><td align=center>
+          <br>
+          <br>
+          <form method="post">
+            <label for="rsl_reconTS">Recon:</label>
+            <select name="rsl_reconTS">
+              <option value="" disabled selected>----</option>
+              <option value="aust21VM">Aust21 VM</option>
+              <option value="aust21p5">Aust21 p5</option>
+              <option value="aust22LAM_PC">Aust22 LAM PC</option>
+              <option value="creel24_a">Creel24 a</option>
+            </select><br><br>
+            <label>Lat: <input name="lat_ts" type="text" value="63" style="width: 60px"></label><br><br>
+            <label>Lon: <input name="lon_ts" type="text" value="19" style="width: 60px"></label><br><br>
+            <label>Age min (ka): <input name="age_min" type="number" value="0" style="width: 60px"></label><br><br>
+            <label>Age max (ka): <input name="age_max" type="number" value="400" style="width: 60px"></label><br><br>
+            <button type="submit" name="action" value="ts_plot">Generate Plot</button>
+          </form>
+          <br>
+          <form method="get" action="/sealevel" style="margin-top: 1em;">
+            <input type="submit" value="Reset">
+          </form>
+        
+          </td></tr>
+        </table>
+
+    </td>
+  </table>
+  <table width = 100%, border="1">
+    <td width=100%>
+      <table width = 100% valign="middle">
+        <tr>
+          <td style="text-align: left; vertical-align: middle; width: 10%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-left: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;"><b>Folder Name</b></td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Model Name</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Region</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Start Time (ka)</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">End Time (ka)</td>
+          <td style="text-align: left; vertical-align: middle; width: 22%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Ice Model Used</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Model Type</td>
+          <td style="text-align: left; vertical-align: middle; width: 26%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Reference & DOI</td>
+          <td style="text-align: left; vertical-align: middle; width: 12%; font-weight: bold; font-size: 12px; border-right: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">Download Link</td>
+        </tr>
+        <tr>
+          <td style="text-align: left; vertical-align: middle; width: 10%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;"><b>SL_austermann2021 (Aust21 VM & Aust21 p5)</b></td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">n/a</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">Global</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">128</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">117</td>
+          <td style="text-align: left; vertical-align: middle; width: 22%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">two base Earth Structure with 3D perterbations added to them, one following VM5, another with upper mantle of 0.5e21</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">3D_spherical</td>
+          <td style="text-align: left; vertical-align: middle; width: 26%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">Austermann, J., Hoggard, M.J., Latychev, K., Richards, F.D. and Mitrovica, J.X., 2021. The effect of lateral variations in Earth structure on Last Interglacial sea level. Geophysical Journal International, 227(3), pp.1938-1960. DOI:<a href="https://doi.org/10.1093/gji/ggab289" target="_blank"> https://doi.org/10.1093/gji/ggab289</a></td>
+          <td style="text-align: left; vertical-align: middle; width: 12%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">
+            <a href="https://osf.io/m9qcz/" target="_blank">Externally hosted link</a>
+            <hr>
+            <a href="https://storage.googleapis.com/giamachine_output_data/SL_austermann2021/austermann2021_RSL_VM.nc" target="_blank">Google Cloud Bucket link</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left; vertical-align: middle; width: 10%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;"><b>SL_austermann2022</b></td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">LAM PC</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">Global</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">118</td>
+          <td style="text-align: left; vertical-align: middle; width: 6%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">0</td>
+          <td style="text-align: left; vertical-align: middle; width: 22%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">DEGLACIATION--Laurentide: Lambeck et al., (2017); Fennoscandian: Lambeck et al., (2006) and Lambeck et al., (2010); British-Irish ice sheet Lambeck et al., (1995) and Lambeck (1996); all other ice sheets Peltier et al., (2015)</td>
+          <td style="text-align: left; vertical-align: middle; width: 8%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">1D_spherical</td>
+          <td style="text-align: left; vertical-align: middle; width: 26%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">Austermann, J., Wickert, A.D., Pico, T., Kingslake, J., Callaghan, K.L. and Creel, R.C., 2022. Glacial isostatic adjustment shapes proglacial lakes over glacial cycles. Geophysical Research Letters, 49(24), p.e2022GL101191. DOI:<a href="https://doi.org/10.1029/2022GL101192" target="_blank"> https://doi.org/10.1029/2022GL101192</a></td>
+          <td style="text-align: left; vertical-align: middle; width: 12%; font-weight: bold; font-size: 10px; border-right: 1px solid grey; border-bottom: 1px solid black;">
+            <a href="https://zenodo.org/records/7378941" target="_blank">Externally hosted link</a>
+            <hr>
+            <a href="https://storage.googleapis.com/giamachine_output_data/SL_austermann2022/austermann2022_LAM_PC.nc" target="_blank">Google Cloud Bucket link</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </table>
+<br>
+<br>
+</body>
+</html>

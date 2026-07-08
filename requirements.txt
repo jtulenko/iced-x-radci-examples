@@ -1,0 +1,16 @@
+Flask
+pymysql
+Bokeh==3.7.3
+pandas
+numpy
+matplotlib
+xyzservices
+xarray
+netCDF4
+gcsfs
+h5netcdf
+h5py
+zarr
+dask
+geopandas
+cmcrameri
