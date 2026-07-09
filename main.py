@@ -21,7 +21,8 @@ def radciexamples():
 
     #rsl_site_list = query_result[1:,0].tolist()
     rsl_site_list = query_result.flatten()[1:].tolist()
-    
+    rsl_site_list = rsl_site_list[0]
+
     script1,div1 = "", ""
 
     if request.method == "POST":
