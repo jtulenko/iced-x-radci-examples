@@ -41,7 +41,7 @@
 
   <table width = 100%, border = "1">
     <tr>
-      <p align="left"><a href="/">Home</a> | <a href= "/icedexamples">ICE-D Examples</a> | <a href= "/radciexamples">RAD-CI Examples</a> | <a href= "/bothexamples">Examples using both!</a></p>
+      <p align="left"><a href="/">Home</a> | <a href="https://www.ice-d.org">ICE-D Home Page</a> | <a href= "https://www.rad-ci.org">RAD-CI Home Page</a></p>
     </tr>
   </table>
 
@@ -68,9 +68,6 @@
             <label for="rsl_site">RSL Site</label>
             <select name="rsl_site">
               <option value="" disabled selected>----</option>
-              <option value="Dunlop Island">Dunlop Island</option>
-              <option value="Southwest Greenland, Sisimiut Region">Southwest Greenland, Sisimiut Region</option>
-              <option value="Marble Point">Marble Point</option>
               {% for rsl_site in rsl_site_list %}
                 <option value="{{ rsl_site }}">{{ rsl_site }}</option><br>
               {% endfor %}
@@ -88,11 +85,6 @@
     </td>
   </table>
 
-  <table width = 100%, border = "1">
-    <tr>
-      <p align="left"><a href="https://www.ice-d.org">ICE-D Home Page</a> | <a href= "https://www.rad-ci.org">RAD-CI Home Page</a></p>
-    </tr>
-  </table>
 <br>
 <br>
 </body>
