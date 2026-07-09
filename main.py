@@ -12,10 +12,10 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/icedexamples')
-def feedback():
-    
-    return render_template('icedexamples.html')
+#@app.route('/icedexamples')
+#def feedback():
+#    
+#    return render_template('icedexamples.html')
 
 
 @app.route('/radciexamples', methods=["GET", "POST"])
@@ -41,22 +41,22 @@ def radciexamples():
     return render_template('radciexamples.html', script1=script1, div1=div1, rsl_site_list=rsl_site_list)
 
 
-@app.route('/icedxradci')
-def feedback():
-    
-    return render_template('icedxradci.html')
+#@app.route('/icedxradci')
+#def feedback():
+#    
+#    return render_template('icedxradci.html')
 
 
-@app.route('/askiced')
-def feedback():
-    
-    return render_template('askiced.html')
+#@app.route('/askiced')
+#def feedback():
+#    
+#    return render_template('askiced.html')
 
 
-@app.route('/icedlab')
-def feedback():
-    
-    return render_template('icedlab.html')
+#@app.route('/icedlab')
+#def feedback():
+#    
+#    return render_template('icedlab.html')
 
 
 if __name__ == '__main__':
