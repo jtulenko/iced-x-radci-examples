@@ -45,42 +45,13 @@
 
   <table width = 100%, border="1">
     <td>
-    <h3>RAD-CI Relative Sea Level Plots</h3>
-    <p> Choose from a select list of RSL Sites to generate interactive age-elevation plots</p>
+    <h3>AskICE-D</h3>
+    <p> Choose from a select list of attributes to query the ICE-D Project database</p>
     </td>
   </table>
 
   <table width = 100%, border="1", height = 600px>
-    <td width=895px, valign="top", halign="left">
-        <table>
-          <tr><td align=center><div> {{script1 | safe}} {{ div1 | safe }} </div></td></tr>
-        </table>
-    </td>
-    <td width=295px, valign="top", halign="right">
-        <table width=300px>
-          <tr><td><b>RSL Site Selection</b></td></tr>
-          <tr><td align=center>
-          <br>
-          <br>
-          <form method="post">
-            <label for="rsl_site">RSL Site</label>
-            <select name="rsl_site">
-              <option value="" disabled selected>----</option>
-              {% for rsl_site in rsl_site_list %}
-                <option value="{{ rsl_site }}">{{ rsl_site }}</option><br>
-              {% endfor %}
-            </select><br><br>
-
-            <button type="submit" name="action" value="rsl_plot">Generate Plot</button>
-          </form>
-          <form method="get" action="/radciexamples" style="margin-top: 1em;">
-            <input type="submit" value="Reset">
-          </form>
-        
-          </td></tr>
-        </table>
-
-    </td>
+    
   </table>
 
 <br>
