@@ -17,7 +17,9 @@ def radciexamples():
     rsl_site_query = f"""SELECT DISTINCT base_rsl_site.name
             FROM base_rsl_site"""
     
-    rsl_site_list = dbconnect.querier_radci(rsl_site_query)
+    query_result = dbconnect.querier_radci(rsl_site_query)
+
+    rsl_site_list = query_result[1:,0].astype(str)
 
     script1,div1 = "", ""
 
