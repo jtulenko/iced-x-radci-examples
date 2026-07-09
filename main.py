@@ -2,6 +2,8 @@ import datetime
 import plotting
 from flask import Flask, render_template, request
 
+import dbconnect
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -11,6 +13,12 @@ def home():
 
 @app.route('/radciexamples', methods=["GET", "POST"])
 def radciexamples():
+
+    rsl_site_query = f"""SELECT DISTINCT base_rsl_site.name
+            FROM base_rsl_site"""
+    
+    rsl_site_list = dbconnect.querier_radci(rsl_site_query)
+
     script1,div1 = "", ""
 
     if request.method == "POST":
@@ -21,7 +29,7 @@ def radciexamples():
 
             script1, div1 = plotting.rsl_plot(rsl_site)
 
-    return render_template('radciexamples.html', script1=script1, div1=div1)
+    return render_template('radciexamples.html', script1=script1, div1=div1, rsl_site_list=rsl_site_list)
 
 @app.route('/sealevel', methods=["GET", "POST"])
 def sealevel():

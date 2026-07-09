@@ -71,6 +71,9 @@
               <option value="Dunlop Island">Dunlop Island</option>
               <option value="Southwest Greenland, Sisimiut Region">Southwest Greenland, Sisimiut Region</option>
               <option value="Marble Point">Marble Point</option>
+              {% for rsl_site in rsl_site_list %}
+                <option value="{{ rsl_site_list | safe }}">{{ rsl_site_list | safe }}</option>
+              {% endfor %}
             </select><br><br>
 
             <button type="submit" name="action" value="rsl_plot">Generate Plot</button>
