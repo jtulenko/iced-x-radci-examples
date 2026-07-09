@@ -19,8 +19,7 @@ def radciexamples():
     
     query_result = dbconnect.querier_radci(rsl_site_query)
 
-    #rsl_site_list = query_result[1:,0].tolist()
-    rsl_site_list = query_result.ravel().tolist()[1:]
+    rsl_site_list = query_result[1:,0].astype(str).tolist()
 
     script1,div1 = "", ""
 
