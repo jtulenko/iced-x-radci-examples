@@ -19,8 +19,9 @@ def radciexamples():
     
     query_result = dbconnect.querier_radci(rsl_site_query)
 
-    rsl_site_list = query_result[1:,0].tolist()
-
+    #rsl_site_list = query_result[1:,0].tolist()
+    rsl_site_list = query_result.flatten()[1:].tolist()
+    
     script1,div1 = "", ""
 
     if request.method == "POST":
