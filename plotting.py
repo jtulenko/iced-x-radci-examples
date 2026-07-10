@@ -69,6 +69,51 @@ def rsl_plot(rsl_plot):
 
     return components(p)
 
+def c14_psat():
+
+    c14_psat_query = f"""SELECT DISTINCT _c14_quartz.N14_atoms_g, base_sample.elv_m, base_calculatedage.t_St, base_sample.name
+	    FROM _c14_quartz
+	    JOIN base_sample ON _c14_quartz.sample_id = base_sample.id
+	    JOIN base_site ON base_sample.site_id = base_site.id
+	    JOIN base_calculatedage ON base_calculatedage.sample_id = base_sample.id
+	    JOIN base_application_sites ON base_site.id = base_application_sites.site_id
+	    WHERE base_calculatedage.t_St != 0
+	    AND base_sample.elv_m > 1
+	    AND _c14_quartz.N14_atoms_g / base_calculatedage.t_St < 100
+	    AND base_calculatedage.t_St < 25000
+	    AND base_calculatedage.nuclide LIKE "%N14quartz%"
+	    AND base_application_sites.application_id = 1"""
+    
+    list_result = dbconnect.querier_iced(c14_psat_query)
+
+    x1 = (list_result[1:,0].astype(float)) * 0.00012096809
+    y1 = list_result[1:,1].astype(float)
+    sizes = (list_result[1:,2].astype(float)) ** (1/4)
+    name = list_result[1:,3]
+
+    #df1 = pandas.DataFrame(list(result))
+    #x1 = df1[0] * 0.00012096809
+    #y1 = df1[1]
+    #sizes = df1[2] ** (1/4)
+    #name = df1[3]
+
+    data = {'x1': array(x1),
+                'y1': array(y1),
+                'sizes': array(sizes),
+                'name': array(name)}
+
+    p= figure(width=475, height=500, x_axis_type="log", title="Saturation concentration of in-situ C-14")
+    p.xaxis.axis_label = "N * I"
+    p.yaxis.axis_label = "Elevation (m)"
+
+    p.scatter('x1','y1', size='sizes', source=data, fill_color='rgba(255, 168, 38, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
+    p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@sizes"),("N * I", "@x1")]))
+
+
+    plot_script, plot_div = components(p)
+
+    return components(p)
+
 def get_shoreline():
 
     with open("static/world_shoreline.geojson", "r") as f:
