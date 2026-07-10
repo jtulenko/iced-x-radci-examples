@@ -88,14 +88,8 @@ def c14_psat():
 
     x1 = (list_result[1:,0].astype(float)) * 0.00012096809
     y1 = list_result[1:,1].astype(float)
-    sizes = (list_result[1:,2].astype(float)) ** (1/4)
+    sizes = (list_result[1:,2].astype(float)) ** (1/2)
     name = list_result[1:,3]
-
-    #df1 = pandas.DataFrame(list(result))
-    #x1 = df1[0] * 0.00012096809
-    #y1 = df1[1]
-    #sizes = df1[2] ** (1/4)
-    #name = df1[3]
 
     data = {'x1': array(x1),
                 'y1': array(y1),
@@ -106,7 +100,7 @@ def c14_psat():
     p.xaxis.axis_label = "N * I"
     p.yaxis.axis_label = "Elevation (m)"
 
-    p.scatter('x1','y1', size='sizes', source=data, fill_color='rgba(255, 168, 38, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
+    p.scatter('x1','y1', size='sizes', source=data, fill_color='rgba(255, 168, 38, 1)', fill_alpha=0.7, line_color='grey', line_alpha=0.1, marker="circle")
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@sizes"),("N * I", "@x1")]))
 
 
