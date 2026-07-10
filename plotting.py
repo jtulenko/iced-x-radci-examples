@@ -100,7 +100,7 @@ def c14_psat():
     p.xaxis.axis_label = "N * I"
     p.yaxis.axis_label = "Elevation (m)"
 
-    p.scatter('x1','y1', size='sizes', source=data, fill_color='rgba(255, 168, 38, 1)', fill_alpha=0.7, line_color='grey', line_alpha=0.1, marker="circle")
+    p.scatter('x1','y1', size='sizes', source=data, fill_color='rgba(255, 168, 38, 1)', fill_alpha=0.7, line_color='grey', line_alpha=0.5, marker="circle")
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@sizes"),("N * I", "@x1")]))
 
 
