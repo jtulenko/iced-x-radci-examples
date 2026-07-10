@@ -88,7 +88,7 @@ def c14_psat():
 
     x1 = (list_result[1:,0].astype(float)) * 0.00012096809
     y1 = list_result[1:,1].astype(float)
-    sizes = (list_result[1:,2].astype(float)) ** (1/2)
+    sizes = (list_result[1:,2].astype(float)) ** (1/3.5)
     name = list_result[1:,3]
 
     data = {'x1': array(x1),
