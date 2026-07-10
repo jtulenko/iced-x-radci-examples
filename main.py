@@ -14,7 +14,9 @@ def home():
 
 @app.route('/icedexamples')
 def icedexamples():
-    script1,div1 = "",""
+    script1, div1 = plotting.c14_psat()
+
+
     
     return render_template('icedexamples.html', script1=script1, div1=div1)
 
