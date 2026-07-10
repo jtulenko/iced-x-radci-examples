@@ -82,6 +82,9 @@ def c14_psat():
 	    AND _c14_quartz.N14_atoms_g / base_calculatedage.t_St < 100
 	    AND base_calculatedage.t_St < 25000
 	    AND base_calculatedage.nuclide LIKE "%N14quartz%"
+        AND base_sample.name NOT LIKE "%10-MPS-046-NNS%"
+	    AND base_sample.name NOT LIKE "%10-MPS-008-NNS%"
+	    AND base_sample.name NOT LIKE "%10-MPS-006-COU%"
 	    AND base_application_sites.application_id = 1"""
     
     list_result = dbconnect.querier_iced(c14_psat_query)
