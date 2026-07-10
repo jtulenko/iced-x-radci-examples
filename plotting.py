@@ -102,7 +102,7 @@ def c14_psat():
                 'sizes': array(sizes),
                 'name': array(name)}
 
-    p= figure(width=475, height=500, x_axis_type="log", title="Saturation concentration of in-situ C-14")
+    p= figure(width=750, height=500, x_axis_type="log", title="Saturation concentration of in-situ C-14")
     p.xaxis.axis_label = "N * I"
     p.yaxis.axis_label = "Elevation (m)"
 
