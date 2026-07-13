@@ -17,7 +17,7 @@
  body {
      font-weight: normal;
      font-size: 20px;
-     font-family: "Arial", sans-serif;
+     font-family: 'Franklin Gothic Medium', sans-serif;
      color: #444444;
      background-color: #EEEEEE;
      text-align: center;
@@ -28,13 +28,13 @@
  a:link {
      font-weight: bold;
      text-decoration: none;
-     color: #6666DF;
+     color: #4444DF;
  }
 
  a:visited {
      font-weight: bold;
      text-decoration: none;
-     color: #4444DF;
+     color: #6666DF ;
  }
 
  table {
