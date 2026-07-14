@@ -193,8 +193,21 @@ def created_at():
 
 def ratio_elv_plot():
 
-    ratio_elev_query=f"""
-        """
+    ratio_elev_query=f"""SELECT DISTINCT _be10_al26_quartz.N10_atoms_g, _be10_al26_quartz.N26_atoms_g, base_sample.elv_m, _be10_al26_quartz.delN10_atoms_g, _be10_al26_quartz.delN26_atoms_g, base_sample.name
+        FROM base_sample
+        JOIN _be10_al26_quartz ON base_sample.id = _be10_al26_quartz.sample_id
+        JOIN base_calculatedage ON base_calculatedage.sample_id = base_sample.id
+        JOIN base_site ON base_site.id = base_sample.site_id
+        JOIN base_application_sites ON base_application_sites.site_id = base_site.id
+        WHERE base_sample.elv_m IS NOT NULL
+        AND base_sample.elv_m != 0
+        AND _be10_al26_quartz.N10_atoms_g IS NOT NULL
+        AND _be10_al26_quartz.N10_atoms_g != 0
+        AND _be10_al26_quartz.N26_atoms_g IS NOT NULL
+        AND _be10_al26_quartz.N26_atoms_g != 0
+        AND base_sample.what LIKE "%oulder%"
+        AND base_calculatedage.t_St > 25000
+        AND base_application_sites.application_id = 2"""
     
     list_result = dbconnect.querier_iced(ratio_elev_query)
 
