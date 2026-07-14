@@ -164,6 +164,34 @@ def gris_tdd():
 
     return components(p)
 
+def created_at():
+    
+    created_at_query=f"""SELECT LEFT(base_sample.created_at,4), SUBSTRING(base_sample.created_at,6,2), SUBSTRING(base_sample.created_at,9,2)
+        FROM base_sample
+        WHERE base_sample.id > 21901"""
+    
+    list_result = dbconnect.querier_iced(created_at_query)
+
+    date1 = list_result[1:,0].astype(float)
+    date2 = (list_result[1:,1].astype(float)) / 12
+    date3 = (list_result[1:,2].astype(float)) / 365
+
+    date = date1 + date2 + date3
+
+    p= figure(width=750, height=500, title="Dates for samples entered into ICE-D")
+    p.xaxis.axis_label = "Date Entered (decimal date)"
+    p.yaxis.axis_label = "Sample Count"
+
+    bins = numpy.arange(numpy.min(date),numpy.max(date) + (5/365), (5/365))
+    hist, edges = numpy.histogram(date, bins=bins)
+
+    #p.hist(date, bins=numpy.arange(numpy.min(date),numpy.max(date) + (5/365), (5/365)))
+    p.quad(top=hist,bottom=0,left=edges[:-1], right=edges[1:], fill_color="navy", line_color="white", alpha=0.5)
+
+    plot_script, plot_div = components(p)
+    
+    return components(p)
+
 def get_shoreline():
 
     with open("static/world_shoreline.geojson", "r") as f:

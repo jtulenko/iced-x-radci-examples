@@ -16,8 +16,12 @@ def home():
 def icedexamples():
     script1, div1 = plotting.c14_psat()
     script2, div2 = plotting.gris_tdd()
+    script3, div3 = plotting.created_at()
 
-    return render_template('icedexamples.html', script1=script1, div1=div1, script2=script2, div2=div2)
+    return render_template('icedexamples.html',
+                           script1=script1, div1=div1,
+                           script2=script2, div2=div2,
+                           script3=script3, div3=div3)
 
 
 @app.route('/radciexamples', methods=["GET", "POST"])
@@ -40,7 +44,9 @@ def radciexamples():
 
             script1, div1 = plotting.rsl_plot(rsl_site)
 
-    return render_template('radciexamples.html', script1=script1, div1=div1, rsl_site_list=rsl_site_list)
+    return render_template('radciexamples.html',
+                           script1=script1, div1=div1,
+                           rsl_site_list=rsl_site_list)
 
 
 @app.route('/icedxradci')
