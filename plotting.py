@@ -215,7 +215,7 @@ def ratio_elv_plot():
     y1= (list_result[1:,1].astype(float)) / (list_result[1:,0].astype(float))
     y_min = y1 - (((list_result[1:,3].astype(float)) / (list_result[1:,0].astype(float)))**2) + (((list_result[1:,4].astype(float)) / (list_result[1:,1].astype(float)))**0.5)
     y_max = y1 + (((list_result[1:,3].astype(float)) / (list_result[1:,0].astype(float)))**2) + (((list_result[1:,4].astype(float)) / (list_result[1:,1].astype(float)))**0.5)
-    sizes = (list_result[1:,0].astype(float)) ** (1/4.5)
+    sizes = (list_result[1:,0].astype(float)) ** (1/6)
     name = list_result[1:,5].astype(str)
 
     data = {'x1': array(x1),
@@ -234,7 +234,7 @@ def ratio_elv_plot():
     correlation_xy = correlation_matrix[0,1]
     r_squared = correlation_xy**2
 
-    p= figure(width=475, height=500, title="[Al]/[Be] ratio with Elevation", y_range=(4,10))
+    p= figure(width=750, height=500, title="[Al]/[Be] ratio with Elevation", y_range=(4,10))
     p.xaxis.axis_label = "Elevation (m)"
     p.yaxis.axis_label = "[Al]/[Be]"
 
