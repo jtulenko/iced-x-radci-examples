@@ -139,7 +139,7 @@ def gris_tdd():
             'y_max': array(y_max),
             'name': array(name)}
 
-    p= figure(width=475, height=500, y_range=(16,5), title="Western Greenland longitude versus boulder ages")
+    p= figure(width=750, height=500, y_range=(16,5), title="Western Greenland longitude versus boulder ages")
     p.xaxis.axis_label = "Longitude (decimal degrees)"
     p.yaxis.axis_label = "Exposure ages using aproximated Arctic PR and St Scaling (ka)"
 
