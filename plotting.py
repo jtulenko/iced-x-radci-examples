@@ -95,9 +95,9 @@ def c14_psat():
     name = list_result[1:,3]
 
     data = {'x1': array(x1),
-                'y1': array(y1),
-                'sizes': array(sizes),
-                'name': array(name)}
+            'y1': array(y1),
+            'sizes': array(sizes),
+            'name': array(name)}
 
     p= figure(width=750, height=500, x_axis_type="log", title="Saturation concentration of in-situ C-14")
     p.xaxis.axis_label = "N * I"
@@ -158,7 +158,7 @@ def gris_tdd():
 
     p.vbar(x='x1', bottom='y_min', top='y_max', source=data, width=.0005, line_color='black')
     p.scatter('x1','y1', source=data, size = 12, fill_color='rgba(0, 128, 128, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
-    p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
+    #p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
 
     plot_script, plot_div = components(p)
 
