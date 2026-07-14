@@ -185,11 +185,53 @@ def created_at():
     bins = numpy.arange(numpy.min(date),numpy.max(date) + (5/365), (5/365))
     hist, edges = numpy.histogram(date, bins=bins)
 
-    #p.hist(date, bins=numpy.arange(numpy.min(date),numpy.max(date) + (5/365), (5/365)))
     p.quad(top=hist,bottom=0,left=edges[:-1], right=edges[1:], fill_color="navy", line_color="white", alpha=0.5)
 
     plot_script, plot_div = components(p)
     
+    return components(p)
+
+def ratio_elv_plot():
+
+    ratio_elev_query=f"""
+        """
+    
+    list_result = dbconnect.querier_iced(ratio_elev_query)
+
+    x1= list_result[1:,2].astype(float)
+    y1= (list_result[1:,1].astype(float)) / (list_result[1:,0].astype(float))
+    y_min = y1 - (((list_result[1:,3].astype(float)) / (list_result[1:,0].astype(float)))**2) + (((list_result[1:,4].astype(float)) / (list_result[1:,1].astype(float)))**0.5)
+    y_max = y1 + (((list_result[1:,3].astype(float)) / (list_result[1:,0].astype(float)))**2) + (((list_result[1:,4].astype(float)) / (list_result[1:,1].astype(float)))**0.5)
+    sizes = (list_result[1:,0].astype(float)) ** (1/4.5)
+    name = list_result[1:,5].astype(str)
+
+    data = {'x1': array(x1),
+            'y1': array(y1),
+            'y_min': array(y_min),
+            'y_max': array(y_max),
+            'sizes': array(sizes),
+            'name': array(name)}
+
+
+    par = numpy.polyfit(x1, y1, 1, full=True)
+    slope=par[0][0]
+    intercept=par[0][1]
+    y_predicted = [slope*i + intercept  for i in x1]
+    correlation_matrix = numpy.corrcoef(x1, y1)
+    correlation_xy = correlation_matrix[0,1]
+    r_squared = correlation_xy**2
+
+    p= figure(width=475, height=500, title="[Al]/[Be] ratio with Elevation", y_range=(4,10))
+    p.xaxis.axis_label = "Elevation (m)"
+    p.yaxis.axis_label = "[Al]/[Be]"
+
+    p.vbar(x='x1', bottom='y_min', top='y_max', width=1, source=data, line_color='black')
+    p.scatter('x1', 'y1', size='sizes', source=data, fill_color= 'rgba(220, 208, 255, 1)', fill_alpha=0.9, line_color='grey', line_width=0.5, legend_label = 'size = [10Be] ^ (1/4.5)', marker="circle")
+    p.line(x1,y_predicted, color='black',legend_label='y= '+str(round(slope,6))+'x+'+str(round(intercept,2))+'   r^2 ='+str(round(r_squared,6)))
+    p.add_tools(HoverTool(tooltips=[("sample name", "@name"),("[Al-26] / [Be-10]", "@y1")]))
+
+    plot_script, plot_div = components(p)
+
     return components(p)
 
 def get_shoreline():

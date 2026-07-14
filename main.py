@@ -17,11 +17,13 @@ def icedexamples():
     script1, div1 = plotting.c14_psat()
     script2, div2 = plotting.gris_tdd()
     script3, div3 = plotting.created_at()
+    script4, div4 = plotting.ratio_elv_plot()
 
     return render_template('icedexamples.html',
                            script1=script1, div1=div1,
                            script2=script2, div2=div2,
-                           script3=script3, div3=div3)
+                           script3=script3, div3=div3,
+                           script4=script4, div4=div4)
 
 
 @app.route('/radciexamples', methods=["GET", "POST"])
