@@ -111,6 +111,60 @@ def c14_psat():
 
     return components(p)
 
+def gris_tdd():
+
+    gris_tdd_query = f"""SELECT base_sample.lon_DD, base_calculatedage.t_St, base_calculatedage.dtint_St, base_sample.name
+        FROM base_sample
+        JOIN base_site ON base_sample.site_id = base_site.id
+        JOIN base_application_sites ON base_site.id = base_application_sites.site_id
+        JOIN base_calculatedage ON base_sample.id = base_calculatedage.sample_id
+        WHERE base_application_sites.application_id = 3
+        AND base_sample.what LIKE "%oulder%"
+        AND (base_sample.lat_DD >= 64.8 AND base_sample.lat_DD <=71)
+        AND (base_sample.lon_DD >= -60 AND base_sample.lon_DD <= -48)
+        AND base_calculatedage.t_St != 0
+        AND base_calculatedage.t_St IS NOT NULL;"""
+    
+    list_result = dbconnect.querier_iced(gris_tdd_query)
+
+    x1 = list_result[1,:0].astype(float)
+    y1 = ((list_result[1,:1].astype(float)) / 1.0134) / 1000
+    y_min = y1 - (((list_result[1,:2].astype(float)) / 1.0134) / 1000)
+    y_max = y1 + (((list_result[1,:2].astype(float)) / 1.0134) / 1000)
+    name = list_result[1,:3].astype(str)
+
+    data = {'x1': array(x1),
+            'y1': array(y1),
+            'y_min': array(y_min),
+            'y_max': array(y_max),
+            'name': array(name)}
+
+    p= figure(width=475, height=500, y_range=(16,5), title="Western Greenland longitude versus boulder ages")
+    p.xaxis.axis_label = "Longitude (decimal degrees)"
+    p.yaxis.axis_label = "Exposure ages using aproximated Arctic PR and St Scaling (ka)"
+
+    events = [9.3, 8.2]
+
+    e1 = Span(location=events[0], dimension='width', line_color='grey', line_alpha=0.5, line_width=20)
+    e1.level = 'underlay'
+
+    e2 = Span(location=events[1], dimension='width', line_color='grey', line_alpha=0.5, line_width=20)
+    e2.level = 'underlay'
+
+    p.add_layout(e1)
+    p.add_layout(e2)
+    p.line([],[], line_color='grey', line_alpha=0.5, line_width=20, legend_label= "grey bars = 9.3 and 8.2 ka events")
+    p.legend.location = "top_left"
+
+    p.vbar(x='x1', bottom='y_min', top='y_max', source=data, width=.0005, line_color='black')
+    p.scatter('x1','y1', source=data, size = 12, fill_color='rgba(0, 128, 128, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
+    p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
+
+    plot_script, plot_div = components(p)
+
+
+    return components(p)
+
 def get_shoreline():
 
     with open("static/world_shoreline.geojson", "r") as f:
