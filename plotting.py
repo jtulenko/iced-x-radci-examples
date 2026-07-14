@@ -127,11 +127,11 @@ def gris_tdd():
     
     list_result = dbconnect.querier_iced(gris_tdd_query)
 
-    x1 = list_result[1,:0].astype(float)
-    y1 = ((list_result[1,:1].astype(float)) / 1.0134) / 1000
-    y_min = y1 - (((list_result[1,:2].astype(float)) / 1.0134) / 1000)
-    y_max = y1 + (((list_result[1,:2].astype(float)) / 1.0134) / 1000)
-    name = list_result[1,:3].astype(str)
+    x1 = list_result[1:,0].astype(float)
+    y1 = ((list_result[1:,1].astype(float)) / 1.0134) / 1000
+    y_min = y1 - (((list_result[1:,2].astype(float)) / 1.0134) / 1000)
+    y_max = y1 + (((list_result[1:,2].astype(float)) / 1.0134) / 1000)
+    name = list_result[1:,3].astype(str)
 
     data = {'x1': array(x1),
             'y1': array(y1),
@@ -158,7 +158,7 @@ def gris_tdd():
 
     p.vbar(x='x1', bottom='y_min', top='y_max', source=data, width=.0005, line_color='black')
     p.scatter('x1','y1', source=data, size = 12, fill_color='rgba(0, 128, 128, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
-    #p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
+    p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
 
     plot_script, plot_div = components(p)
 
