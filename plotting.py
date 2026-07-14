@@ -239,7 +239,7 @@ def ratio_elv_plot():
     p.yaxis.axis_label = "[Al]/[Be]"
 
     p.vbar(x='x1', bottom='y_min', top='y_max', width=1, source=data, line_color='black')
-    p.scatter('x1', 'y1', size='sizes', source=data, fill_color= 'rgba(220, 208, 255, 1)', fill_alpha=0.9, line_color='grey', line_width=0.5, legend_label = 'size = [10Be] ^ (1/5)', marker="circle")
+    p.scatter('x1', 'y1', size='sizes', source=data, fill_color= 'rgba(48, 92, 222, 1)', fill_alpha=0.9, line_color='grey', line_width=0.5, legend_label = 'size = [10Be] ^ (1/5)', marker="circle")
     p.line(x1,y_predicted, color='black',legend_label='y= '+str(round(slope,6))+'x+'+str(round(intercept,2))+'   r^2 ='+str(round(r_squared,6)))
     p.add_tools(HoverTool(tooltips=[("sample name", "@name"),("[Al-26] / [Be-10]", "@y1")]))
 
