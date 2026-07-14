@@ -15,10 +15,9 @@ def home():
 @app.route('/icedexamples')
 def icedexamples():
     script1, div1 = plotting.c14_psat()
+    script2, div2 = plotting.gris_tdd()
 
-
-    
-    return render_template('icedexamples.html', script1=script1, div1=div1)
+    return render_template('icedexamples.html', script1=script1, div1=div1, script2=script2, div2=div2)
 
 
 @app.route('/radciexamples', methods=["GET", "POST"])

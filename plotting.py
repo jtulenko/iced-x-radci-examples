@@ -162,7 +162,6 @@ def gris_tdd():
 
     plot_script, plot_div = components(p)
 
-
     return components(p)
 
 def get_shoreline():
