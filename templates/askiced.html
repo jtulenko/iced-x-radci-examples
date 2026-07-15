@@ -62,10 +62,10 @@
   </table>
   <table width=100%>
     <td align=center>
-      <h3>Sample Attributes</h3>
+      <tr><h3>Sample Attributes</h3></tr>
       <br>
-      <form method="post">
-        <!--<tr> -->
+      <tr>
+        <form method="post">
           <td width="25%" style="border-right:1px solid #000;">
             <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br>
             <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
@@ -85,15 +85,19 @@
             <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m"> Sample Elevation (m)</label><br>
             <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
           </td>
-        <!--</tr>-->
-      </form>
+        </form>
+      </tr>
       <br>
-      <form method="post">
-        <button type="submit" name="action" value="askicedquery">Submit!</button>
-      </form>
-      <form method="get" action="/askiced" style="margin-top: 1em;">
-        <input type="submit" value="Reset">
-      </form>
+      <tr>
+        <form method="post">
+          <button type="submit" name="action" value="askicedquery">Submit!</button>
+        </form>
+      </tr>
+      <tr>
+        <form method="get" action="/askiced" style="margin-top: 1em;">
+          <input type="submit" value="Reset">
+        </form>
+      </tr>
     </td>
   </table>
 
