@@ -61,41 +61,40 @@
     </td>
   </table>
   <br>
-  <table width="100%">
-    <td width="100%">
-      <h3>Sample Attributes</h3>
-  </table>
-  <table width=100%>
-    <form action="/submit" method="POST" enctype="multipart/form-data">
-      <tr>
-        <td width="25%" style="text-align: left;">
-          <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br><br>
-          <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
-        </td>
+  
+  <form action="/submit" method="POST" enctype="multipart/form-data">
+    <table width="100%">
+      <td width="100%">
+        <h3>Sample Attributes</h3>
+      </td>
+    </table>
+    <table width=100%> 
+      <td width="25%" style="text-align: left;">
+        <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br><br>
+        <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
+      </td>
 
-        <td width="25%" style="text-align: left;">
-          <label><input type="checkbox" id="samplelat" name="SAMPLELAT" value="base_sample.lat_DD"> Sample Latitude (DD)</label><br><br>
-          <label><input type="checkbox" id="sampledensity" name="SAMPLEDENSITY" value="base_sample.density"> Sample Density (g/cm3)</label>
-        </td>
+      <td width="25%" style="text-align: left;">
+        <label><input type="checkbox" id="samplelat" name="SAMPLELAT" value="base_sample.lat_DD"> Sample Latitude (DD)</label><br><br>
+        <label><input type="checkbox" id="sampledensity" name="SAMPLEDENSITY" value="base_sample.density"> Sample Density (g/cm3)</label>
+      </td>
 
-        <td width="25%" style="text-align: left;"> <!--style="border-right:1px solid #000;">-->
-          <label><input type="checkbox" id="samplelon" name="SAMPLELON" value="base_sample.lon_DD"> Sample Longitude (DD)</label><br><br>
-          <label><input type="checkbox" id="sampleshield" name="SAMPLESHIELD" value="base_sample.shielding"> Sample Shielding</label>
-        </td>
+      <td width="25%" style="text-align: left;"> <!--style="border-right:1px solid #000;">-->
+        <label><input type="checkbox" id="samplelon" name="SAMPLELON" value="base_sample.lon_DD"> Sample Longitude (DD)</label><br><br>
+        <label><input type="checkbox" id="sampleshield" name="SAMPLESHIELD" value="base_sample.shielding"> Sample Shielding</label>
+      </td>
 
-        <td width="25%" style="text-align: left;">
-          <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m"> Sample Elevation (m)</label><br><br>
-          <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
-        </td>
-        <br>
-      </tr>
-      <tr>
+      <td width="25%" style="text-align: left;">
+        <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m"> Sample Elevation (m)</label><br><br>
+        <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
+      </td>
+    </table>
+    <table width="100%">
         <td width="100%">
           <button type="submit">Submit!</button>
         </td>
-      </tr>
-    </form>
-  </table>
+    </table>
+  </form>
   <table width="100%">
     <td><br></td>
   </table>
