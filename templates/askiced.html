@@ -58,7 +58,8 @@
     <td style="text-align: center;">
     <br>
     <a><img alt="askicedbanner" src="https://storage.googleapis.com/iced-x-radci-examples/images/askice-d_banner.jpg" style="width: 1100px;"></a>
-    <p>Choose from a select list of attributes to query the ICE-D Project database</p>
+    <h2>Choose from a select list of attributes to query the ICE-D Project database</h2>
+    <p>Maybe should add some of the description stuff here that was in the old Ghub Tool</p>
     </td>
   </table>
   <br>
@@ -71,25 +72,49 @@
     </table>
     <table width=100%> 
       <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br><br>
-        <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
+        <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name">Sample Name </label><br><br>
+        <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm">Sample Thickness (cm) </label>
       </td>
 
       <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" id="samplelat" name="SAMPLELAT" value="base_sample.lat_DD"> Sample Latitude (DD)</label><br><br>
-        <label><input type="checkbox" id="sampledensity" name="SAMPLEDENSITY" value="base_sample.density"> Sample Density (g/cm3)</label>
+        <label><input type="checkbox" id="samplelat" name="SAMPLELAT" value="base_sample.lat_DD">Sample Latitude (DD) </label><br><br>
+        <label><input type="checkbox" id="sampledensity" name="SAMPLEDENSITY" value="base_sample.density">Sample Density (g/cm3) </label>
       </td>
 
       <td width="25%" style="text-align: left;"> <!--style="border-right:1px solid #000;">-->
-        <label><input type="checkbox" id="samplelon" name="SAMPLELON" value="base_sample.lon_DD"> Sample Longitude (DD)</label><br><br>
-        <label><input type="checkbox" id="sampleshield" name="SAMPLESHIELD" value="base_sample.shielding"> Sample Shielding</label>
+        <label><input type="checkbox" id="samplelon" name="SAMPLELON" value="base_sample.lon_DD">Sample Longitude (DD) </label><br><br>
+        <label><input type="checkbox" id="sampleshield" name="SAMPLESHIELD" value="base_sample.shielding">Sample Shielding </label>
       </td>
 
       <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m"> Sample Elevation (m)</label><br><br>
-        <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
+        <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m">Sample Elevation (m) </label><br><br>
+        <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what">Sample Type (what) </label>
       </td>
     </table>
+
+    <table width="100%">
+      <td width="100%">
+        <h3>Sample Attributes</h3>
+      </td>
+    </table>
+    <table width=100%> 
+      <td width="33.3333%" style="text-align: left;">
+        <label><input type="checkbox" id="agest" name="AGEST" value="base_calculatedage.t_St">Sample Age - St (a) </label><br><br>
+        <label><input type="checkbox" id="errst" name="ERRST" value="base_calculatedage.dtint_St">Age Uncertainty - St (a) </label><br><br>
+        <label><input type="checkbox" id="nuclide" name="NUCLIDE" value="base_calculatedage.nuclide">Nuclide </label>
+      </td>
+
+      <td width="33.3333%" style="text-align: left;">
+        <label><input type="checkbox" id="agelm" name="AGELLM" value="base_calculatedage.t_Lm"> Sample Age - Lm (a)</label><br><br>
+        <label><input type="checkbox" id="errlm" name="ERRLM" value="base_calculatedage.dtint_Lm"> Age Uncertainty - Lm (a)</label>
+      </td>
+
+      <td width="33.333%" style="text-align: left;"> <!--style="border-right:1px solid #000;">-->
+        <label><input type="checkbox" id="agelsdn" name="AGELSDN" value="base_calculatedage.t_LSDn"> Sample Age - LSDn (a)</label><br><br>
+        <label><input type="checkbox" id="errlsdn" name="ERRLSDN" value="base_calculatedage.dtint_LSDn"> Age Uncertainty - LSDn (a)</label>
+      </td>
+    </table>
+
     <table width="100%">
         <td width="100%" style="text-align: center; margin-top: 1em;">
           <button type="submit">Submit!</button>
