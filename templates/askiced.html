@@ -60,9 +60,32 @@
     <p> Choose from a select list of attributes to query the ICE-D Project database</p>
     </td>
   </table>
+  <table width=100%>
+    <tr><td><h3>Sample Attributes</h3></td></tr>
+    <tr><td align=center>
+    <br>
+    <br>
+    <form method="post">
+      <input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name">
+      <label for="samplename"> Sample Name</label><br>
+    </form>
+    <form method="post">
+      <label for="rsl_site">RSL Site</label>
+      <select name="rsl_site">
+        <option value="" disabled selected>----</option>
+        {% for rsl_site in rsl_site_list %}
+          <option value="{{ rsl_site }}">{{ rsl_site }}</option><br>
+        {% endfor %}
+      </select><br><br>
 
-  <table width = 100%, border="1", height = 600px>
-    
+      <button type="submit" name="action" value="rsl_plot">Generate Plot</button>
+    </form>
+    <form method="get" action="/radciexamples" style="margin-top: 1em;">
+      <input type="submit" value="Reset">
+    </form>
+  
+    </td></tr>
+        </table>
   </table>
 
 <br>

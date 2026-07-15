@@ -157,7 +157,7 @@ def gris_tdd():
     p.legend.location = "top_left"
 
     p.vbar(x='x1', bottom='y_min', top='y_max', source=data, width=.0005, line_color='black')
-    p.scatter('x1','y1', source=data, size = 12, fill_color='rgba(0, 128, 128, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.1, marker="circle")
+    p.scatter('x1','y1', source=data, size = 12, fill_color='rgba(0, 128, 128, 1)', fill_alpha=0.9, line_color='grey', line_alpha=0.5, marker="circle")
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name"),("Age (ka)", "@y1")]))
 
     plot_script, plot_div = components(p)
