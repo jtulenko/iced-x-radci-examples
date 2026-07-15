@@ -63,11 +63,29 @@
   <table width=100%>
     <tr><td><h3>Sample Attributes</h3></td></tr>
     <tr><td align=center>
-    <br>
-    <br>
     <form method="post">
       <input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name">
-      <label for="samplename"> Sample Name</label><br>
+      <label for="samplename"> Sample Name</label>
+      
+      <input type="checkbox" id="samplelat" name="SAMPLELAT" value="base_sample.lat_DD">
+      <label for="samplename"> Sample Latitude (DD)</label>
+
+      <input type="checkbox" id="samplelon" name="SAMPLELON" value="base_sample.lon_DD">
+      <label for="samplename"> Sample Longitude (DD)</label>
+
+      <input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m">
+      <label for="samplename"> Sample Elevation (m)</label>
+      <br>
+
+      <input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm">
+      <label for="samplename"> Sample THickness (cm)</label>
+
+      <input type="checkbox" id="sampledensity" name="SAMPLEDENSITY" value="base_sample.density">
+      <label for="samplename"> Sample Density (g/cm3)</label>
+
+      <input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what">
+      <label for="samplename"> Sample Type (what)</label>
+      <br>
     </form>
     <form method="post">
       <label for="rsl_site">RSL Site</label>
