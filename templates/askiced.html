@@ -61,13 +61,13 @@
     </td>
   </table>
   <br>
-  <table width="100%">
-    <td width="100%">
-      <h3>Sample Attributes</h3>
-  </table>
   <table width=100%>
+    <table width="100%">
+      <td width="100%">
+        <h3>Sample Attributes</h3>
+    </table>
     <tr>
-      <form method="post">
+      <form action="/submit" method="POST" enctype="multipart/form-data">
         <td width="25%" style="text-align: left;">
           <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br><br>
           <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
@@ -87,6 +87,9 @@
           <label><input type="checkbox" id="sampleelvm" name="SAMPLEELVM" value="base_sample.elv_m"> Sample Elevation (m)</label><br><br>
           <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
         </td>
+        <br>
+
+        <button type="submit">Submit!</button>
       </form>
     </tr>
   </table>
@@ -96,7 +99,7 @@
   <table width="100%" style="text-align: center;">
     <td width="100%">
       <form method="post">
-        <button type="submit" name="action" value="askicedquery">Submit!</button>
+        
       </form>
     </td>
   </table>
