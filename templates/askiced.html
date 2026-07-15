@@ -66,8 +66,8 @@
       <h3>Sample Attributes</h3>
   </table>
   <table width=100%>
-    <tr>
-      <form action="/submit" method="POST" enctype="multipart/form-data">
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+      <tr>
         <td width="25%" style="text-align: left;">
           <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name"> Sample Name</label><br><br>
           <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm"> Sample Thickness (cm)</label>
@@ -88,10 +88,13 @@
           <label><input type="checkbox" id="samplewhat" name="SAMPLEWHAT" value="base_sample.what"> Sample Type (what)</label>
         </td>
         <br>
-
-        <button type="submit">Submit!</button>
-      </form>
-    </tr>
+      </tr>
+      <tr>
+        <td width="100%">
+          <button type="submit">Submit!</button>
+        </td>
+      </tr>
+    </form>
   </table>
   <table width="100%">
     <td><br></td>
