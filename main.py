@@ -57,7 +57,7 @@ def icedxradci():
     return render_template('icedxradci.html')
 
 
-@app.route('/askiced')
+@app.route('/askiced', methods=["GET", "POST"])
 def askiced():
     
     return render_template('askiced.html')
