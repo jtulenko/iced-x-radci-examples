@@ -68,7 +68,7 @@ def askiced():
     if action == "inputs":
         application = str(request.form.get("application"))
 
-        query.append(application)
+        query += application
     
     return render_template('askiced.html',
                            query=query)
