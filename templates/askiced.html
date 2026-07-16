@@ -279,11 +279,11 @@
       <td width="33.3333%" style="text-align: left; vertical-align: top;">
         <label><select name="site_type" style="width: 200px; font-size: 20px;">
           <option value="None" disabled selected>----</option>
-          <option value="moraine">moraine</option>
-          <option value="nunatak">nunatak</option>
-          <option value="bedrocksurfaces">bedrock surface(s)</option>
-          <option value="terracefan">terrace/fan</option>
-          <option value="erratics">erratic(s)</option>
+          <option value="base_site.what LIKE '%moraine%'">moraine</option>
+          <option value="base_site.what LIKE '%nunatak%'">nunatak</option>
+          <option value="base_site.what LIKE '%bedrock%'">bedrock surface(s)</option>
+          <option value="(base_site.what LIKE '%terrace%' OR base_site.what LIKE '%fan%')">terrace/fan</option>
+          <option value="base_site.what LIKE '%erratic%'">erratic(s)</option>
           <option value="None">none</option>
         </select>  Site Type </label><br><br>
       </td>
@@ -291,10 +291,10 @@
       <td width="33.3333%" style="text-align: left; vertical-align: top;">
         <label><select name="sample_type" style="width: 200px; font-size: 20px;">
           <option value="None" disabled selected>----</option>
-          <option value="boulder">boulder</option>
-          <option value="bedrock">bedrock</option>
-          <option value="erratic">erratic</option>
-          <option value="cobbleclastpebble">Cobble(s)/Clast(s)/Pebble(s)</option>
+          <option value="base_sample.what LIKE '%boulder%'">boulder</option>
+          <option value="base_sample.what LIKE '%bedrock%'">bedrock</option>
+          <option value="base_sample.what LIKE '%erratic%'">erratic</option>
+          <option value="(base_sample.what LIKE '%cobble%' OR base_sample.what LIKE '%clast%' OR base_sample.what LIKE '%pebble%'">Cobble(s)/Clast(s)/Pebble(s)</option>
           <option value="None">none</option>
         </select>  Sample Type </label><br><br>
       </td>
