@@ -63,12 +63,15 @@ def askiced():
 
     action = request.form.get("action")
 
-    if action == "application":
+    query = ""
+
+    if action == "inputs":
         application = str(request.form.get("application"))
 
-        print_result = print(application)
+        query.append(application)
     
-    return render_template('askiced.html')
+    return render_template('askiced.html',
+                           query=query)
 
 
 @app.route('/icedlab')
