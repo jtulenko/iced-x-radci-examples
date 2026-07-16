@@ -65,6 +65,12 @@
   <br>
   
   <form method="POST" enctype="multipart/form-data">
+    <table>
+      <td width="100%" style="text-align: left;">
+        <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE/PUBLICATION ATTRIBUTES</h2>
+        <br>
+      </td>
+    </table>
     <table width="100%">
       <td width="100%">
         <h3>Sample Attributes</h3>
@@ -199,6 +205,66 @@
 
       <td width="50%" style="text-align: left; vertical-align: top;">
         <label><input type="checkbox" id="pubcite" name="PUBCITE" value="base_publication.bibtex_record">Publication - Full citation (in progress) </label><br><br>
+      </td>
+    </table>
+
+    <table>
+      <td width="100%" style="text-align: left;">
+        <br><br>
+        <h2>STEP 2: DEFINE CONDITIONALS</h2>
+        <br>
+      </td>
+    </table>
+
+    <table width="100%">
+      <td width="100%">
+        <br>
+        <h3>Geographical Conditionals</h3>
+      </td>
+    </table>
+
+    <table width=100% style="font-size: 15px;">
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="number"
+          name="maxlat"
+          min="-90"
+          max="90"
+          step="any">Maximum Latitude (DD) </label><br><br>
+        <label><input type="number"
+          name="minlat"
+          min="-90"
+          max="90"
+          step="any">Minimum Latitude (DD) </label><br><br>
+      </td>
+
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="number"
+          name="maxlon"
+          min="-180"
+          max="180"
+          step="any">Maximum Longitude (DD) </label><br><br>
+        <label><input type="number"
+          name="minlon"
+          min="-180"
+          max="180"
+          step="any">Minimum Longitude (DD) </label><br><br>
+      </td>
+
+      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
+      </td>
+    </table>
+
+    <table width=100% style="font-size: 15px;">
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="file"
+          name="uploadoutline"
+          accept=".geojson, .kml">Use the uploader here if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY) </label><br><br>
+      </td>
+
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+      </td>
+
+      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
       </td>
     </table>
 
