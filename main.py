@@ -1,6 +1,7 @@
 import datetime
 import plotting
 from flask import Flask, render_template, request
+from tabulate import tabulate
 
 import dbconnect
 
@@ -59,8 +60,12 @@ def icedxradci():
 
 @app.route('/askiced', methods=["GET", "POST"])
 def askiced():
+
+    attribute1 = request.form['application']
+
+    test_print = print(attribute1)
     
-    return render_template('askiced.html')
+    return render_template('askiced.html', test_print=test_print)
 
 
 @app.route('/icedlab')
