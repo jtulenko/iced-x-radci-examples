@@ -1,6 +1,6 @@
 import datetime
 import plotting
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, abort
 from tabulate import tabulate
 
 import dbconnect
@@ -234,13 +234,50 @@ def askiced():
             att_string += pubcite
             #need to work on this to set up query syntax to concat citation like we do on ICE-D pages
 
-        application = str(request.form.get("application"))
-        
         query += sql_select
         query += sql_distinct
         query += att_string
         query += '<br>'
 
+        if request.form["maxlat"]:
+            try:
+                maxlat = float(request.form["maxlat"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_sample.lat_DD <= {maxlat}"
+            query += '<br>'
+
+        if request.form["minlat"]:
+            try:
+                minlat = float(request.form["minlat"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_sample.lat_DD >= {minlat}"
+            query += '<br>'
+
+        if request.form["maxlon"]:
+            try:
+                maxlon = float(request.form["maxlon"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_sample.lon_DD <= {maxlon}"
+            query += '<br>'
+
+        if request.form["minlon"]:
+            try:
+                minlon = float(request.form["minlon"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_sample.lon_DD >= {minlon}"
+            query += '<br>'
+
+
+
+        application = str(request.form.get("application"))
         if application in ['None']:
             query += '<br>'
         else:
