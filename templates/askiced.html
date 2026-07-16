@@ -70,7 +70,7 @@
         <h3>Sample Attributes</h3>
       </td>
     </table>
-    <table width=100% style="font-size: 10px;"> 
+    <table width=100% style="font-size: 15px;"> 
       <td width="25%" style="text-align: left;">
         <label><input type="checkbox" id="samplename" name="SAMPLENAME" value="base_sample.name">Sample Name </label><br><br>
         <label><input type="checkbox" id="samplethick" name="SAMPLETHICK" value="base_sample.thick_cm">Sample Thickness (cm) </label>
@@ -98,7 +98,7 @@
         <h3>Age Attributes</h3>
       </td>
     </table>
-    <table width=100% style="font-size: 10px;"> 
+    <table width=100% style="font-size: 15px;">
       <td width="33.3333%" style="text-align: left; vertical-align: top;">
         <label><input type="checkbox" id="agest" name="AGEST" value="base_calculatedage.t_St">Sample Age - St (a) </label><br><br>
         <label><input type="checkbox" id="errst" name="ERRST" value="base_calculatedage.dtint_St">Age Uncertainty - St (a) </label><br><br>
@@ -117,8 +117,29 @@
     </table>
 
     <table width="100%">
+      <td width="100%">
+        <br>
+        <h3>Site Attributes</h3>
+      </td>
+    </table>
+    <table width=100% style="font-size: 15px;">
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="checkbox" id="siteshrtnm" name="SITESHRTNM" value="base_site.short_name">Site - Short Name (URL builder) </label><br><br>
+      </td>
+
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="checkbox" id="sitelgnm" name="SITELGNM" value="base_site.name">Site - Full name/description </label><br><br>
+      </td>
+
+      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
+        <label><input type="checkbox" id="sitewhat" name="SITEWHAT" value="base_site.what">Site - What (type) </label><br><br>
+      </td>
+    </table>
+
+    <table width="100%">
         <td width="100%" style="text-align: center; margin-top: 1em;">
-          <button type="submit">Submit!</button>
+          <br>
+          <button type="submit" style="width: 200px; font-size: 20px;">Submit!</button>
         </td>
     </table>
   </form>
