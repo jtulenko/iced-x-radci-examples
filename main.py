@@ -91,12 +91,6 @@ def askiced():
 
     if action == "inputs":
         
-        application = str(request.form.get("application"))
-        if application in ['None']:
-            query += ''
-        else:
-            query += application
-        
         if request.form.get("SAMPLENAME"):
             samplename = str(request.form.get("SAMPLENAME"))
             att_string += samplename
@@ -135,7 +129,13 @@ def askiced():
         query += sql_select
         query += sql_distinct
         query += att_string
-        query += application
+
+        application = str(request.form.get("application"))
+        
+        if application in ['None']:
+            query += ''
+        else:
+            query += application
     
     return render_template('askiced.html',
                            query=query)
