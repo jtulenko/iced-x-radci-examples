@@ -298,6 +298,23 @@ def askiced():
             query += sample_type
             query += '<br>'
 
+        if request.form["maxage"]:
+            try:
+                maxage = float(request.form["maxage"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_calculatedage.t_St <= {maxage}"
+            query += '<br>'
+        
+        if request.form["minage"]:
+            try:
+                minage = float(request.form["minage"])
+            except ValueError:
+                abort(400)
+            query += sql_and
+            query += f"base_calculatedage.t_St <= {minage}"
+            query += '<br>'
 
         application = str(request.form.get("application"))
         if application in ['None']:
