@@ -60,10 +60,6 @@ def icedxradci():
 
 @app.route('/askiced', methods=["GET", "POST"])
 def askiced():
-
-    attribute1 = request.form['application']
-
-    test_print = print(attribute1)
     
     return render_template('askiced.html')
 
