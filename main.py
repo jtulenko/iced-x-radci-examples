@@ -91,6 +91,7 @@ def askiced():
 
     if action == "inputs":
         
+        #sample attributes
         if request.form.get("SAMPLENAME"):
             samplename = str(request.form.get("SAMPLENAME"))
             att_string += samplename
@@ -115,7 +116,31 @@ def askiced():
         if request.form.get("SAMPLEWHAT"):
             samplewhat = str(request.form.get("SAMPLEWHAT"))
             att_string += samplewhat
+
+        #age attributes
+        if request.form.get("AGEST"):
+            agest = str(request.form.get("AGEST"))
+            att_string += agest
+        if request.form.get("ERRST"):
+            errst = str(request.form.get("ERRST"))
+            att_string += errst
+        if request.form.get("AGELM"):
+            agelm = str(request.form.get("AGELM"))
+            att_string += agelm
+        if request.form.get("ERRLM"):
+            errlm = str(request.form.get("ERRLM"))
+            att_string += errlm
+        if request.form.get("AGELSDN"):
+            agelsdn = str(request.form.get("AGELSDN"))
+            att_string += agelsdn
+        if request.form.get("ERRLSDN"):
+            errlsdn = str(request.form.get("ERRLSDN"))
+            att_string += errlsdn
+        if request.form.get("NUCLIDE"):
+            nuclide = str(request.form.get("NUCLIDE"))
+            att_string += nuclide
         
+        #be-10 attributes
         if request.form.get("BECONC"):
             beconc = str(request.form.get("BECONC"))
             att_string += beconc
@@ -134,11 +159,9 @@ def askiced():
         query += '<br>'
 
         if application in ['None']:
-            query += ''
             query += '<br>'
         else:
             query += sql_and
-            query += '<&#9;>'
             query += application
             query += '<br>'
     
