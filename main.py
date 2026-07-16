@@ -60,8 +60,16 @@ def icedxradci():
 
 @app.route('/askiced', methods=["GET", "POST"])
 def askiced():
+
+    action = request.form.get("action")
+
+    if action == "application":
+        application = str(request.form.get("application"))
+
+        print_result = print(application)
     
-    return render_template('askiced.html')
+    return render_template('askiced.html',
+                           print_result = print_result)
 
 
 @app.route('/icedlab')
