@@ -139,6 +139,17 @@ def askiced():
         if request.form.get("NUCLIDE"):
             nuclide = str(request.form.get("NUCLIDE"))
             att_string += nuclide
+
+        #site attributes
+        if request.form.get("SITESHRTNM"):
+            siteshrtnm = str(request.form.get("SITESHRTNM"))
+            att_string += siteshrtnm
+        if request.form.get("SITELGNM"):
+            sitelgnm = str(request.form.get("SITELGNM"))
+            att_string += sitelgnm
+        if request.form.get("SITEWHAT"):
+            sitewhat = str(request.form.get("SITEWHAT"))
+            att_string += sitewhat
         
         #be-10 attributes
         if request.form.get("BECONC"):
@@ -150,6 +161,69 @@ def askiced():
         if request.form.get("BEALLAB"):
             beallab = str(request.form.get("BEALLAB"))
             att_string += beallab
+
+        #al-26 attributes
+        if request.form.get("ALCONC"):
+            alconc = str(request.form.get("ALCONC"))
+            att_string += alconc
+        if request.form.get("ALCONCERR"):
+            alconcerr = str(request.form.get("ALCONCERR"))
+            att_string += alconcerr
+
+        #c-14 attributes
+        if request.form.get("CCONC"):
+            cconc = str(request.form.get("CCONC"))
+            att_string += cconc
+        if request.form.get("CCONCERR"):
+            cconcerr = str(request.form.get("CCONCERR"))
+            att_string += cconcerr
+        if request.form.get("CLAB"):
+            clab = str(request.form.get("CLAB"))
+            att_string += clab
+
+        #He-3 pxol attributes
+        if request.form.get("HEPXOLCONC"):
+            hepxolconc = str(request.form.get("HEPXOLCONC"))
+            att_string += hepxolconc
+        if request.form.get("HEPXOLCONCERR"):
+            hepxolconcerr = str(request.form.get("HEPXOLCONCERR"))
+            att_string += hepxolconcerr
+        if request.form.get("HEPXOLLAB"):
+            hepxollab = str(request.form.get("HEPXOLLAB"))
+            att_string += hepxollab
+
+        #He-3 in qtz attributes
+        if request.form.get("HEQTZCONC"):
+            heqtzconc = str(request.form.get("HEQTZCONC"))
+            att_string += heqtzconc
+        if request.form.get("HEQTZCONCERR"):
+            heqtzconcerr = str(request.form.get("HEQTZCONCERR"))
+            att_string += heqtzconcerr
+        if request.form.get("HEQTZLAB"):
+            heqtzlab = str(request.form.get("HEQTZLAB"))
+            att_string += heqtzlab
+
+        #Ne-21 in qtz attributes
+        if request.form.get("NEQTZCONC"):
+            neqtzconc = str(request.form.get("NEQTZCONC"))
+            att_string += neqtzconc
+        if request.form.get("NEQTZCONCERR"):
+            neqtzconcerr = str(request.form.get("NEQTZCONCERR"))
+            att_string += neqtzconcerr
+        if request.form.get("NEQTZLAB"):
+            neqtzlab = str(request.form.get("NEQTZLAB"))
+            att_string += neqtzlab
+
+        #Cl-36 attributes
+        if request.form.get("CLCONC"):
+            clconc = str(request.form.get("CLCONC"))
+            att_string += clconc
+        if request.form.get("CLCONCERR"):
+            clconcerr = str(request.form.get("CLCONCERR"))
+            att_string += clconcerr
+        if request.form.get("CLLAB"):
+            cllab = str(request.form.get("CLLAB"))
+            att_string += cllab
 
         application = str(request.form.get("application"))
         
