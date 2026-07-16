@@ -89,13 +89,16 @@ def askiced():
 
     if action == "inputs":
         application = str(request.form.get("application"))
+
+        att_string = []
         
         if request.form.get("BECONC"):
             beconc = str(request.form.get("BECONC"))
+            att_string.append(beconc)
 
         query += sql_select
         query += sql_distinct
-        query += beconc
+        query += att_string
         query += application
     
     return render_template('askiced.html',
