@@ -67,7 +67,7 @@
   <form method="POST" enctype="multipart/form-data">
     <table>
       <td width="100%" style="text-align: left;">
-        <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE/PUBLICATION ATTRIBUTES</h2>
+        <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE <br>/PUBLICATION ATTRIBUTES</h2>
         <br>
       </td>
     </table>
@@ -229,12 +229,12 @@
           name="maxlat"
           min="-90"
           max="90"
-          step="any">Maximum Latitude (DD) </label><br><br>
+          step="any">  Maximum Latitude (DD) </label><br><br>
         <label><input type="number"
           name="minlat"
           min="-90"
           max="90"
-          step="any">Minimum Latitude (DD) </label><br><br>
+          step="any">  Minimum Latitude (DD) </label><br><br>
       </td>
 
       <td width="33.3333%" style="text-align: left; vertical-align: top;">
@@ -242,12 +242,12 @@
           name="maxlon"
           min="-180"
           max="180"
-          step="any">Maximum Longitude (DD) </label><br><br>
+          step="any">  Maximum Longitude (DD) </label><br><br>
         <label><input type="number"
           name="minlon"
           min="-180"
           max="180"
-          step="any">Minimum Longitude (DD) </label><br><br>
+          step="any">  Minimum Longitude (DD) </label><br><br>
       </td>
 
       <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
@@ -255,17 +255,16 @@
     </table>
 
     <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="file"
+      <td width="50%" style="text-align: left; vertical-align: top;">
+        <input type="file"
           name="uploadoutline"
-          accept=".geojson, .kml">Use the uploader here if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY) </label><br><br>
+          accept=".geojson, .kml"><br><br>
+        <p>Use the uploader here if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY)</p>
       </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+      <td width="50%" style="text-align: left; vertical-align: top;">
       </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-      </td>
     </table>
 
     <table width="100%">
