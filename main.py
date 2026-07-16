@@ -131,7 +131,7 @@ def askiced():
         query += sql_select
         query += sql_distinct
         query += att_string
-        query += '\n'
+        query += '<br>'
 
         if application in ['None']:
             query += sql_and
