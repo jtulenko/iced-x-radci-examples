@@ -255,17 +255,55 @@
 
     <table width=100% style="font-size: 15px;">
       <td width="50%" style="text-align: left; vertical-align: top;">
-        <br>
+        <br><br>
+        <p>Use the uploader below if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY)</p>
         <input type="file"
           style="width: 500px; font-size: 18px;"
           name="uploadoutline"
           accept=".geojson, .kml"><br>
-        <p>Use the uploader here if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY)</p>
       </td>
 
       <td width="50%" style="text-align: left; vertical-align: top;">
       </td>
+    </table>
 
+    <table width="100%">
+      <td width="100%" style="text-align: left;">
+        <h3>Sample and Site Type Coniditionals</h3>
+      </td>
+    </table>
+
+    <!--Common sample (ex: boulder) and site (ex: moraine) types to choose from - select none if you do not want to filter by sample/site type-->
+
+    <table width=100% style="font-size: 15px;">
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <p>Common sample (ex: boulder) and site (ex: moraine) types to choose from <br> (select none if you do not want to filter by sample/site type)</p>
+        <label><select name="site_type">
+          <option value="" disabled selected>----</option>
+          <option value="moraine">moraine</option>
+          <option value="nunatak">nunatak</option>
+          <option value="bedrocksurfaces">bedrock surface(s)</option>
+          <option value="terracefan">terrace/fan</option>
+          <option value="erratics">erratic(s)</option>
+          <option value="none">none</option>
+        </select>  Site Type </label><br><br>
+      </td>
+
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <p></p>
+        <label><select name="site_type">
+          <option value="" disabled selected>----</option>
+          <option value="boulder">boulder</option>
+          <option value="bedrock">bedrock</option>
+          <option value="erratic">erratic</option>
+          <option value="cobbleclastpebble">Cobble(s)/Clast(s)/Pebble(s)</option>
+          <option value="none">none</option>
+        </select>  Sample Type </label><br><br>
+      </td>
+
+      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
+        <br><br>
+      </td>
     </table>
 
     <table width="100%">
