@@ -225,6 +225,15 @@ def askiced():
             cllab = str(request.form.get("CLLAB"))
             att_string += cllab
 
+        #publication attributes
+        if request.form.get("PUBDOI"):
+            pubdoi = str(request.form.get("PUBDOI"))
+            att_string += pubdoi
+        if request.form.get("PUBCITE"):
+            pubcite = str(request.form.get("PUBCITE"))
+            att_string += pubcite
+            #need to work on this to set up query syntax to concat citation like we do on ICE-D pages
+
         application = str(request.form.get("application"))
         
         query += sql_select
