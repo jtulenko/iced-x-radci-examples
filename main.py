@@ -281,6 +281,22 @@ def askiced():
             if not (filename.endswith(".geojson") or filename.endswith(".kml")):
                 abort(400)
         #this might turn into a pain so I am going to just figure this out later
+                
+        site_type = str(request.form.get("site_type"))
+        if site_type in ['None']:
+            query += '<br>'
+        else:
+            query += sql_and
+            query += site_type
+            query += '<br>'
+        
+        sample_type = str(request.form.get("sample_type"))
+        if sample_type in ['None']:
+            query += '<br>'
+        else:
+            query += sql_and
+            query += sample_type
+            query += '<br>'
 
 
         application = str(request.form.get("application"))
