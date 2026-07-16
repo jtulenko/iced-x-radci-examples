@@ -92,9 +92,40 @@ def askiced():
     if action == "inputs":
         application = str(request.form.get("application"))
         
+        if request.form.get("SAMPLENAME"):
+            samplename = str(request.form.get("SAMPLENAME"))
+            att_string += samplename
+        if request.form.get("SAMPLETHICK"):
+            samplethick = str(request.form.get("SAMPLETHICK"))
+            att_string += samplethick
+        if request.form.get("SAMPLELAT"):
+            samplelat = str(request.form.get("SAMPLELAT"))
+            att_string += samplelat
+        if request.form.get("SAMPLEDENSITY"):
+            sampledensity = str(request.form.get("SAMPLEDENSITY"))
+            att_string += sampledensity
+        if request.form.get("SAMPLELON"):
+            samplelon = str(request.form.get("SAMPLELON"))
+            att_string += samplelon
+        if request.form.get("SAMPLESHIELD"):
+            sampleshield = str(request.form.get("SAMPLESHIELD"))
+            att_string += sampleshield
+        if request.form.get("SAMPLEELVM"):
+            sampleelvm = str(request.form.get("SAMPLEELVM"))
+            att_string += sampleelvm
+        if request.form.get("SAMPLEWHAT"):
+            samplewhat = str(request.form.get("SAMPLEWHAT"))
+            att_string += samplewhat
+        
         if request.form.get("BECONC"):
             beconc = str(request.form.get("BECONC"))
             att_string += beconc
+        if request.form.get("BECONCERR"):
+            beconcerr = str(request.form.get("BECONCERR"))
+            att_string += beconcerr
+        if request.form.get("BEALLAB"):
+            beallab = str(request.form.get("BEALLAB"))
+            att_string += beallab
 
         query += sql_select
         query += sql_distinct
