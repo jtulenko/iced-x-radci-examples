@@ -90,7 +90,12 @@ def askiced():
 
 
     if action == "inputs":
+        
         application = str(request.form.get("application"))
+        if application in ['None']:
+            query += ''
+        else:
+            query += application
         
         if request.form.get("SAMPLENAME"):
             samplename = str(request.form.get("SAMPLENAME"))
