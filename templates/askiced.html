@@ -64,7 +64,7 @@
   </table>
   <br>
   
-  <form method="POST">
+  <form method="POST" enctype="multipart/form-data">
     <table>
       <td width="100%" style="text-align: left;">
         <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE <br>/PUBLICATION ATTRIBUTES</h2>
@@ -407,8 +407,7 @@
     <table width=100% style="font-size: 15px;">
       <td width="50%" style="text-align: left; vertical-align: top;">
         <label><input type="checkbox" name="TABLEOUT" value="tableout">  YES EXACT MATCH</label><br><br>
-        <p style="font-size: 15px;">Note: exact matches will exclude any ICE-D entries that don't have requested attributes <br>
-          (e.g., selecting "Sample Name, Be-10 Concentration, Cl-36 Concentration" will only return samples with [Be-10] <b>AND</b> [Cl-36]")</p>
+        <p style="font-size: 15px;">Note: exact matches will exclude any ICE-D entries that don't have requested attributes (e.g., selecting "Sample Name, Be-10 Concentration, Cl-36 Concentration" will only return samples with [Be-10] <b>AND</b> [Cl-36]")</p>
       </td>
 
 

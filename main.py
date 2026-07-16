@@ -275,6 +275,12 @@ def askiced():
             query += f"base_sample.lon_DD >= {minlon}"
             query += '<br>'
 
+        if request.files.get("uploadoutline"):
+            file = request.files.get("uploadoutline")
+            filename = file.filename.lower()
+            if not (filename.endswith(".geojson") or filename.endswith(".kml")):
+                abort(400)
+        #this might turn into a pain so I am going to just figure this out later
 
 
         application = str(request.form.get("application"))
