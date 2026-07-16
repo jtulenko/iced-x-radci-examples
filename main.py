@@ -86,15 +86,15 @@ def askiced():
     join_pubONpubmatch = 'JOIN base_publication ON base_publication.id = base_samplepublicationsmatch.publication_id '
     join_appsitesONsite = 'JOIN base_application_sites ON base_site.id = base_application_sites.site_id'
 
+    att_string = ''
+
 
     if action == "inputs":
         application = str(request.form.get("application"))
-
-        att_string = []
         
         if request.form.get("BECONC"):
             beconc = str(request.form.get("BECONC"))
-            att_string.append(beconc)
+            att_string += beconc
 
         query += sql_select
         query += sql_distinct
