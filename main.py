@@ -63,11 +63,39 @@ def askiced():
 
     action = request.form.get("action")
 
-    query = ""
+    query = ''
+    sql_select = 'SELECT '
+    sql_distinct = 'DISTINCT '
+    sql_from = 'FROM base_sample '
+    sql_where = 'WHERE '
+    sql_and = 'AND '
+    sql_or = 'OR '
+    sql_like = 'LIKE '
+    sql_geom1 = ' ST_WITHIN( \n'
+    sql_geom1 += '\tPOINT(base_sample.lon_DD, base_sample.lat_DD), \n'
+    sql_geom2 = ') \n'
+    join_siteONsample = 'JOIN base_site ON base_sample.site_id = base_site.id '
+    join_ageONsample = 'JOIN base_calculatedage ON base_calculatedage.sample_id = base_sample.id '
+    join_bealONsample = 'LEFT JOIN _be10_al26_quartz ON base_sample.id = _be10_al26_quartz.sample_id '
+    join_c14ONsample = 'LEFT JOIN _c14_quartz ON base_sample.id = _c14_quartz.sample_id '
+    join_he3pxolONsample = 'LEFT JOIN _he3_pxol ON base_sample.id = _he3_pxol.sample_id '
+    join_he3qtzONsample = 'LEFT JOIN _he3_quartz ON base_sample.id = _he3_quartz.sample_id '
+    join_ne21ONsample = 'LEFT JOIN _ne21_quartz ON base_sample.id = _ne21_quartz.sample_id '
+    join_cl36ONsample = 'LEFT JOIN _cl36 ON base_sample.id = _cl36.sample_id '
+    join_pubmatchONsample = 'JOIN base_samplepublicationsmatch ON base_sample.id = base_samplepublicationsmatch.sample_id '
+    join_pubONpubmatch = 'JOIN base_publication ON base_publication.id = base_samplepublicationsmatch.publication_id '
+    join_appsitesONsite = 'JOIN base_application_sites ON base_site.id = base_application_sites.site_id'
+
 
     if action == "inputs":
         application = str(request.form.get("application"))
+        
+        if request.form.get("BECONC"):
+            beconc = str(request.form.get("BECONC"))
 
+        query += sql_select
+        query += sql_distinct
+        query += beconc
         query += application
     
     return render_template('askiced.html',
