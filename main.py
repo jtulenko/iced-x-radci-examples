@@ -71,9 +71,9 @@ def askiced():
     sql_and = 'AND '
     sql_or = 'OR '
     sql_like = 'LIKE '
-    sql_geom1 = ' ST_WITHIN( \n'
-    sql_geom1 += '\tPOINT(base_sample.lon_DD, base_sample.lat_DD), \n'
-    sql_geom2 = ') \n'
+    sql_geom1 = ' ST_WITHIN( <br>'
+    sql_geom1 += '\tPOINT(base_sample.lon_DD, base_sample.lat_DD), <br>'
+    sql_geom2 = ') <br>'
     join_siteONsample = 'JOIN base_site ON base_sample.site_id = base_site.id '
     join_ageONsample = 'JOIN base_calculatedage ON base_calculatedage.sample_id = base_sample.id '
     join_bealONsample = 'LEFT JOIN _be10_al26_quartz ON base_sample.id = _be10_al26_quartz.sample_id '
@@ -135,8 +135,9 @@ def askiced():
 
         if application in ['None']:
             query += sql_and
+            query += '<&#9;>'
             query += ''
-            query += '\n'
+            query += '<br>'
         else:
             query += application
     
