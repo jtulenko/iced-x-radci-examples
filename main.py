@@ -313,7 +313,7 @@ def askiced():
             except ValueError:
                 abort(400)
             query += sql_and
-            query += f"base_calculatedage.t_St <= {minage}"
+            query += f"base_calculatedage.t_St >= {minage}"
             query += '<br>'
 
         application = str(request.form.get("application"))
