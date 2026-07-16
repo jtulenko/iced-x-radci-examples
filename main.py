@@ -126,14 +126,17 @@ def askiced():
             beallab = str(request.form.get("BEALLAB"))
             att_string += beallab
 
+        application = str(request.form.get("application"))
+        
         query += sql_select
         query += sql_distinct
         query += att_string
+        query += '\n'
 
-        application = str(request.form.get("application"))
-        
         if application in ['None']:
+            query += sql_and
             query += ''
+            query += '\n'
         else:
             query += application
     
