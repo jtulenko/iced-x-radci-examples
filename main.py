@@ -68,8 +68,7 @@ def askiced():
 
         print_result = print(application)
     
-    return render_template('askiced.html',
-                           print_result=print_result)
+    return render_template('askiced.html')
 
 
 @app.route('/icedlab')
