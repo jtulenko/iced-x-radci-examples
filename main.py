@@ -134,12 +134,13 @@ def askiced():
         query += '<br>'
 
         if application in ['None']:
-            query += sql_and
-            query += '<&#9;>'
             query += ''
             query += '<br>'
         else:
+            query += sql_and
+            query += '<&#9;>'
             query += application
+            query += '<br>'
     
     return render_template('askiced.html',
                            query=query)
