@@ -275,8 +275,6 @@
       </td>
     </table>
 
-    <!--Common sample (ex: boulder) and site (ex: moraine) types to choose from - select none if you do not want to filter by sample/site type-->
-
     <table width=100% style="font-size: 15px;">
       <td width="33.3333%" style="text-align: left; vertical-align: top;">
         <label><select name="site_type" style="width: 200px; font-size: 20px;">
@@ -299,6 +297,35 @@
           <option value="cobbleclastpebble">Cobble(s)/Clast(s)/Pebble(s)</option>
           <option value="none">none</option>
         </select>  Sample Type </label><br><br>
+      </td>
+
+      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
+        <br><br>
+      </td>
+    </table>
+
+    <table width="100%">
+      <td width="100%" style="text-align: left;">
+        <br><br>
+        <h3>Age Range Coniditional</h3>
+      </td>
+    </table>
+
+    <table width=100% style="font-size: 15px;">
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="number"
+          name="maxage"
+          min="0"
+          max="any"
+          step="any">  Maximum Exposure Age (a) </label><br><br>
+      </td>
+
+      <td width="33.3333%" style="text-align: left; vertical-align: top;">
+        <label><input type="number"
+          name="minage"
+          min="0"
+          max="any"
+          step="any">  Minimum Exposure Age (a) </label><br><br>
       </td>
 
       <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
