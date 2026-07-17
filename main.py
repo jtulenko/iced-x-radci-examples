@@ -285,7 +285,7 @@ def askiced():
                 
         site_type = str(request.form.get("site_type"))
         if site_type in ['None']:
-            query += '\n'
+            query += ''
         else:
             query += sql_and
             query += site_type
@@ -293,7 +293,7 @@ def askiced():
         
         sample_type = str(request.form.get("sample_type"))
         if sample_type in ['None']:
-            query += '\n'
+            query += ''
         else:
             query += sql_and
             query += sample_type
@@ -319,7 +319,7 @@ def askiced():
 
         application = str(request.form.get("application"))
         if application in ['None']:
-            query += '\n'
+            query += ''
         else:
             query += sql_and
             query += application
