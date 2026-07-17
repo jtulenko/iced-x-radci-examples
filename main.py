@@ -296,12 +296,20 @@ def askiced():
             query += join_siteONsample
             query += '\n'
             query += "WHERE base_sample.id != 0"
+            query += '\n'
+            query += sql_and
+            query += site_type
+            query += '\n'
         elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type not in ["None"]:
             query += join_siteONsample
             query += '\n'
             query += join_appsitesONsite
             query += '\n'
             query += f"WHERE {application}"
+            query += '\n'
+            query += sql_and
+            query += site_type
+            query += '\n'
         elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type in ["None"]:
             query += join_siteONsample
             query += '\n'
@@ -314,19 +322,21 @@ def askiced():
             query += join_appsitesONsite
             query += '\n'
             query += f"WHERE {application}"
+            query += '\n'
+            query += sql_and
+            query += site_type
+            query += '\n'
         elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type not in ["None"]:
             query += join_siteONsample
             query += '\n'
             query += "WHERE base_sample.id != 0"
-        else:
-            query += "WHERE base_sample.id != 0"
-
-        if site_type in ['None']:
-            query += ''
-        else:
+            query += '\n'
             query += sql_and
             query += site_type
             query += '\n'
+        else:
+            query += "WHERE base_sample.id != 0"
+
 
         if request.form["maxlat"]:
             try:
