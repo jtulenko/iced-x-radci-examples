@@ -295,9 +295,7 @@ def askiced():
         elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type not in ["None"]:
             query += join_siteONsample
             query += '\n'
-            query += "WHERE base_sample.id != 0"
-            query += '\n'
-            query += sql_and
+            query += sql_where
             query += site_type
             query += '\n'
         elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type not in ["None"]:
@@ -329,9 +327,7 @@ def askiced():
         elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type not in ["None"]:
             query += join_siteONsample
             query += '\n'
-            query += "WHERE base_sample.id != 0"
-            query += '\n'
-            query += sql_and
+            query += sql_where
             query += site_type
             query += '\n'
         else:
