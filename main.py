@@ -90,6 +90,8 @@ def askiced():
 
 
     if action == "inputs":
+
+        query_statement = f'SQL RESULT:'
         
         #sample attributes
         if request.form.get("SAMPLENAME"):
@@ -325,7 +327,7 @@ def askiced():
             query += '\n'
     
     return render_template('askiced.html',
-                           query=query)
+                           query=query, query_statement=query_statement)
 
 
 @app.route('/icedlab')
