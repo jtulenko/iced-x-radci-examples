@@ -71,9 +71,9 @@ def askiced():
     sql_and = 'AND '
     sql_or = 'OR '
     sql_like = 'LIKE '
-    sql_geom1 = ' ST_WITHIN( <br>'
-    sql_geom1 += '\tPOINT(base_sample.lon_DD, base_sample.lat_DD), <br>'
-    sql_geom2 = ') <br>'
+    sql_geom1 = ' ST_WITHIN( \n'
+    sql_geom1 += '\tPOINT(base_sample.lon_DD, base_sample.lat_DD), \n'
+    sql_geom2 = ') \n'
     join_siteONsample = 'JOIN base_site ON base_sample.site_id = base_site.id '
     join_ageONsample = 'JOIN base_calculatedage ON base_calculatedage.sample_id = base_sample.id '
     join_bealONsample = 'LEFT JOIN _be10_al26_quartz ON base_sample.id = _be10_al26_quartz.sample_id '
@@ -237,7 +237,7 @@ def askiced():
         query += sql_select
         query += sql_distinct
         query += att_string
-        query += '<br>'
+        query += '\n'
 
         if request.form["maxlat"]:
             try:
@@ -246,7 +246,7 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_sample.lat_DD <= {maxlat}"
-            query += '<br>'
+            query += '\n'
 
         if request.form["minlat"]:
             try:
@@ -255,7 +255,7 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_sample.lat_DD >= {minlat}"
-            query += '<br>'
+            query += '\n'
 
         if request.form["maxlon"]:
             try:
@@ -264,7 +264,7 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_sample.lon_DD <= {maxlon}"
-            query += '<br>'
+            query += '\n'
 
         if request.form["minlon"]:
             try:
@@ -273,7 +273,7 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_sample.lon_DD >= {minlon}"
-            query += '<br>'
+            query += '\n'
 
         if request.files.get("uploadoutline"):
             file = request.files.get("uploadoutline")
@@ -284,19 +284,19 @@ def askiced():
                 
         site_type = str(request.form.get("site_type"))
         if site_type in ['None']:
-            query += '<br>'
+            query += '\n'
         else:
             query += sql_and
             query += site_type
-            query += '<br>'
+            query += '\n'
         
         sample_type = str(request.form.get("sample_type"))
         if sample_type in ['None']:
-            query += '<br>'
+            query += '\n'
         else:
             query += sql_and
             query += sample_type
-            query += '<br>'
+            query += '\n'
 
         if request.form["maxage"]:
             try:
@@ -305,7 +305,7 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_calculatedage.t_St <= {maxage}"
-            query += '<br>'
+            query += '\n'
         
         if request.form["minage"]:
             try:
@@ -314,15 +314,15 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_calculatedage.t_St >= {minage}"
-            query += '<br>'
+            query += '\n'
 
         application = str(request.form.get("application"))
         if application in ['None']:
-            query += '<br>'
+            query += '\n'
         else:
             query += sql_and
             query += application
-            query += '<br>'
+            query += '\n'
     
     return render_template('askiced.html',
                            query=query)
