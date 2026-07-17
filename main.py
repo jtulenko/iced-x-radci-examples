@@ -243,9 +243,6 @@ def askiced():
         query += sql_from
         query += '\n'
 
-        if request.form.get("application"):
-            application = str(request.form.get("application"))
-
         if any(request.form.get(name) for name in ["AGEST", "ERRST", "AGELM", "ERRLM", "AGELSDN", "ERRLSDN", "NUCLIDE"]):
             query += join_ageONsample
             query += '\n'
@@ -280,10 +277,14 @@ def askiced():
             query += join_pubONpubmatch
             query += '\n'
 
+        
+
+        application = str(request.form.get("application"))
+
         if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ['None']:
             query += join_siteONsample
             query += '\n'
-        
+    
         if application not in ['None'] and not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
             query += join_siteONsample
             query += '\n'
