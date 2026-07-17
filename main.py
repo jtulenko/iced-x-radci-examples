@@ -243,7 +243,11 @@ def askiced():
         query += sql_from
         query += '\n'
 
-        if request.form.get("PUBDOI") or request.form.get("PUBCITE"):
+        if any(request.form.get(name) for name in ["AGEST", "ERRST", "AGELM", "ERRLM", "AGELSDN", "ERRLSDN", "NUCLIDE"]):
+            query += join_ageONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["PUBDOI", "PUBCITE"]):
             query += join_pubmatchONsample
             query += '\n'
             query += join_pubONpubmatch
