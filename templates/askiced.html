@@ -28,7 +28,7 @@
       </script>
   </head>
 <body>
-  <table width = 100%, class="table_alt">
+  <table width = 100%, class="table_alt" style="table-layout: fixed;">
     <tr>
       <td align="left" width="13.33333%"><a href='/'><img alt="icedradcilogo" src="https://storage.googleapis.com/iced-x-radci-examples/images/ICED_RADCI_logo.png" style="margin:10px;width:150px" /></a></td>
       <td align="left" width="32%">
@@ -48,16 +48,16 @@
     </tr>
   </table>
 
-  <table width = 100%>
+  <table width = 100% style="table-layout: fixed;">
     <tr>
       <p align="left"><a href="/">HOME</a> | <a href="https://www.ice-d.org">ICE-D HOME PAGE</a> | <a href= "https://www.rad-ci.org">RAD-CI HOME PAGE</a></p>
     </tr>
   </table>
 
-  <table width = 100%, style="table-layout: fixed;" >
+  <table width = 100%, style="table-layout: fixed;">
     <td style="text-align: center;">
     <br>
-    <a><img alt="askicedbanner" src="https://storage.googleapis.com/iced-x-radci-examples/images/askice-d_banner.jpg" style="max-width:100%; height:auto;"></a>
+    <a><img alt="askicedbanner" src="https://storage.googleapis.com/iced-x-radci-examples/images/askice-d_banner.jpg" style="max-width:90%; height:auto;"></a>
     <h2>Query data from the ICE-D Project database using common conditionals</h2>
     <p>Maybe should add some of the description stuff here that was in the old Ghub Tool</p>
     </td>
@@ -65,130 +65,149 @@
   <br>
   
   <form method="POST" enctype="multipart/form-data">
-    <table>
-      <td width="100%" style="text-align: left;">
-        <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE/<br>PUBLICATION ATTRIBUTES</h2>
-        <br>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <h2>STEP 1: SELECT DESIRED SAMPLE/SITE/NUCLIDE/<br>PUBLICATION ATTRIBUTES</h2>
+          <br>
+        </td>
+      </tr>
     </table>
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <h3>Sample Attributes</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <h3>Sample Attributes</h3>
+        </td>
+      </tr>
     </table>
-    <table width=100% style="font-size: 15px;"> 
-      <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" name="SAMPLENAME" value="base_sample.name, ">Sample Name </label><br><br>
-        <label><input type="checkbox" name="SAMPLETHICK" value="base_sample.thick_cm, ">Sample Thickness (cm) </label>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <label><input type="checkbox" name="SAMPLENAME" value="base_sample.name, ">Sample Name </label><br><br>
+          <label><input type="checkbox" name="SAMPLETHICK" value="base_sample.thick_cm, ">Sample Thickness (cm) </label>
+        </td>
 
-      <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" name="SAMPLELAT" value="base_sample.lat_DD, ">Sample Latitude (DD) </label><br><br>
-        <label><input type="checkbox" name="SAMPLEDENSITY" value="base_sample.density, ">Sample Density (g/cm3) </label>
-      </td>
+        <td style="text-align: left; padding: 0 10px;">
+          <label><input type="checkbox" name="SAMPLELAT" value="base_sample.lat_DD, ">Sample Latitude (DD) </label><br><br>
+          <label><input type="checkbox" name="SAMPLEDENSITY" value="base_sample.density, ">Sample Density (g/cm3) </label>
+        </td>
 
-      <td width="25%" style="text-align: left;"> <!--style="border-right:1px solid #000;">-->
-        <label><input type="checkbox" name="SAMPLELON" value="base_sample.lon_DD, ">Sample Longitude (DD) </label><br><br>
-        <label><input type="checkbox" name="SAMPLESHIELD" value="base_sample.shielding, ">Sample Shielding </label>
-      </td>
+        <td width="25%" style="text-align: left; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <label><input type="checkbox" name="SAMPLELON" value="base_sample.lon_DD, ">Sample Longitude (DD) </label><br><br>
+          <label><input type="checkbox" name="SAMPLESHIELD" value="base_sample.shielding, ">Sample Shielding </label>
+        </td>
 
-      <td width="25%" style="text-align: left;">
-        <label><input type="checkbox" name="SAMPLEELVM" value="base_sample.elv_m, ">Sample Elevation (m) </label><br><br>
-        <label><input type="checkbox" name="SAMPLEWHAT" value="base_sample.what, ">Sample Type (what) </label>
-      </td>
-    </table>
-
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br>
-        <h3>Age Attributes</h3>
-      </td>
-    </table>
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="AGEST" value="base_calculatedage.t_St, ">Sample Age - St (a) </label><br><br>
-        <label><input type="checkbox" name="ERRST" value="base_calculatedage.dtint_St, ">Age Uncertainty - St (a) </label><br><br>
-        <label><input type="checkbox" name="NUCLIDE" value="base_calculatedage.nuclide, ">Nuclide </label>
-      </td>
-
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="AGELM" value="base_calculatedage.t_Lm, "> Sample Age - Lm (a)</label><br><br>
-        <label><input type="checkbox" name="ERRLM" value="base_calculatedage.dtint_Lm, "> Age Uncertainty - Lm (a)</label>
-      </td>
-
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <label><input type="checkbox" name="AGELSDN" value="base_calculatedage.t_LSDn, "> Sample Age - LSDn (a)</label><br><br>
-        <label><input type="checkbox" name="ERRLSDN" value="base_calculatedage.dtint_LSDn, "> Age Uncertainty - LSDn (a)</label>
-      </td>
+        <td width="25%" style="text-align: left; padding: 0 10px;">
+          <label><input type="checkbox" name="SAMPLEELVM" value="base_sample.elv_m, ">Sample Elevation (m) </label><br><br>
+          <label><input type="checkbox" name="SAMPLEWHAT" value="base_sample.what, ">Sample Type (what) </label>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br>
-        <h3>Site Attributes</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br>
+          <h3>Age Attributes</h3>
+        </td>
+      </tr>
     </table>
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="SITESHRTNM" value="base_site.short_name, ">Site - Short Name (URL builder) </label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="AGEST" value="base_calculatedage.t_St, ">Sample Age - St (a) </label><br><br>
+          <label><input type="checkbox" name="ERRST" value="base_calculatedage.dtint_St, ">Age Uncertainty - St (a) </label><br><br>
+          <label><input type="checkbox" name="NUCLIDE" value="base_calculatedage.nuclide, ">Nuclide </label>
+        </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="SITELGNM" value="base_site.name, ">Site - Full name/description </label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="AGELM" value="base_calculatedage.t_Lm, "> Sample Age - Lm (a)</label><br><br>
+          <label><input type="checkbox" name="ERRLM" value="base_calculatedage.dtint_Lm, "> Age Uncertainty - Lm (a)</label>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <label><input type="checkbox" name="SITEWHAT" value="base_site.what, ">Site - What (type) </label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <label><input type="checkbox" name="AGELSDN" value="base_calculatedage.t_LSDn, "> Sample Age - LSDn (a)</label><br><br>
+          <label><input type="checkbox" name="ERRLSDN" value="base_calculatedage.dtint_LSDn, "> Age Uncertainty - LSDn (a)</label>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br>
-        <h3>Nuclide Attributes</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br>
+          <h3>Site Attributes</h3>
+        </td>
+      </tr>
+    </table>
+    
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="SITESHRTNM" value="base_site.short_name, ">Site - Short Name (URL builder) </label><br><br>
+        </td>
+
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="SITELGNM" value="base_site.name, ">Site - Full name/description </label><br><br>
+        </td>
+
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <label><input type="checkbox" name="SITEWHAT" value="base_site.what, ">Site - What (type) </label><br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <p style="font-size: 20px;"><b>Be-10 Data</b></p>
-        <label><input type="checkbox" name="BECONC" value="_be10_al26quartz.N10_atoms_g, ">Be-10 - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="BECONCERR" value="_be10_al26quartz.delN10_atoms_g, ">Be-10 - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="BEALLAB" value="_be10_al26quartz.prep_lab, ">Be-10 / Al-26 - Prep Lab </label><br><br>
-        <br>
-        <p style="font-size: 20px;"><b>He-3 (in Px-Ol) Data</b></p>
-        <label><input type="checkbox" name="HEPXOLCONC" value="_he3_pxol.N3c_atoms_g, ">He-3 (PxOl) - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="HEPXOLCONCERR" value="_he3_pxol.delN3c_atoms_g, ">He-3 (PxOl) - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="HEPXOLLAB" value="_he3_pxol.system, ">He-3 (PxOl) - System </label><br><br>
-        <br>
-        <p style="font-size: 20px;"><b>Cl-36 Data</b></p>
-        <label><input type="checkbox" name="CLCONC" value="_cl36.N36_atoms_g, ">Cl-36 - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="CLCONCERR" value="_cl36.delN36_atoms_g, ">Cl-36 - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="CLLAB" value="_cl36.chem_lab, ">Cl-36 - Chem Lab </label><br><br>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>  
+        <td width="100%" style="text-align: left; padding: 0 10px;">
+          <br>
+          <h3>Nuclide Attributes</h3>
+        </td>
+      </tr>
+    </table>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <p style="font-size: 20px;"><b>Al-26 Data</b></p>
-        <label><input type="checkbox" name="ALCONC" value="_be10_al26quartz.N26_atoms_g, ">Al-26 - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="ALCONCERR" value="_be10_al26quartz.delN26_atoms_g, ">Al-26 - Uncertainty (int) (atoms/g) </label><br><br>
-        <br><br><br>
-        <p style="font-size: 20px;"><b>He-3 (in Qtz) Data</b></p>
-        <label><input type="checkbox" name="HEQTZCONC" value="_he3_quartz.N3c_atoms_g, ">He-3 (Qtz) - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="HEQTZCONCERR" value="_he3_quartz.delN3c_atoms_g, ">He-3 (Qtz) - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="HEQTZLAB" value="_he3_quartz.system, ">He-3 (Qtz) - System </label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <p style="font-size: 20px;"><b>Be-10 Data</b></p>
+          <label><input type="checkbox" name="BECONC" value="_be10_al26quartz.N10_atoms_g, ">Be-10 - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="BECONCERR" value="_be10_al26quartz.delN10_atoms_g, ">Be-10 - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="BEALLAB" value="_be10_al26quartz.prep_lab, ">Be-10 / Al-26 - Prep Lab </label><br><br>
+          <br>
+          <p style="font-size: 20px;"><b>He-3 (in Px-Ol) Data</b></p>
+          <label><input type="checkbox" name="HEPXOLCONC" value="_he3_pxol.N3c_atoms_g, ">He-3 (PxOl) - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="HEPXOLCONCERR" value="_he3_pxol.delN3c_atoms_g, ">He-3 (PxOl) - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="HEPXOLLAB" value="_he3_pxol.system, ">He-3 (PxOl) - System </label><br><br>
+          <br>
+          <p style="font-size: 20px;"><b>Cl-36 Data</b></p>
+          <label><input type="checkbox" name="CLCONC" value="_cl36.N36_atoms_g, ">Cl-36 - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="CLCONCERR" value="_cl36.delN36_atoms_g, ">Cl-36 - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="CLLAB" value="_cl36.chem_lab, ">Cl-36 - Chem Lab </label><br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <p style="font-size: 20px;"><b>C-14 Data</b></p>
-        <label><input type="checkbox" name="CCONC" value="_c14quartz.N14_atoms_g, ">C-14 - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="CCONCERR" value="_c14quartz.delN14_atoms_g, ">C-14 - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="CLAB" value="_c14quartz.extraction_lab, ">C-14 - Extraction Lab </label><br><br>
-        <br>
-        <p style="font-size: 20px;"><b>Ne-21 (in Qtz) Data</b></p>
-        <label><input type="checkbox" name="NEQTZCONC" value="_ne21_quartz.N21_atoms_g, ">Ne-21 (Qtz) - Concentration (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="NEQTZCONCERR" value="_ne21_quartz.delN21_atoms_g, ">Ne-21 (Qtz) - Uncertainty (int) (atoms/g) </label><br><br>
-        <label><input type="checkbox" name="NEQTZLAB" value="_ne21_quartz.system, ">Ne-21 (Qtz) - System </label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <p style="font-size: 20px;"><b>Al-26 Data</b></p>
+          <label><input type="checkbox" name="ALCONC" value="_be10_al26quartz.N26_atoms_g, ">Al-26 - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="ALCONCERR" value="_be10_al26quartz.delN26_atoms_g, ">Al-26 - Uncertainty (int) (atoms/g) </label><br><br>
+          <br><br><br>
+          <p style="font-size: 20px;"><b>He-3 (in Qtz) Data</b></p>
+          <label><input type="checkbox" name="HEQTZCONC" value="_he3_quartz.N3c_atoms_g, ">He-3 (Qtz) - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="HEQTZCONCERR" value="_he3_quartz.delN3c_atoms_g, ">He-3 (Qtz) - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="HEQTZLAB" value="_he3_quartz.system, ">He-3 (Qtz) - System </label><br><br>
+        </td>
+
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <p style="font-size: 20px;"><b>C-14 Data</b></p>
+          <label><input type="checkbox" name="CCONC" value="_c14quartz.N14_atoms_g, ">C-14 - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="CCONCERR" value="_c14quartz.delN14_atoms_g, ">C-14 - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="CLAB" value="_c14quartz.extraction_lab, ">C-14 - Extraction Lab </label><br><br>
+          <br>
+          <p style="font-size: 20px;"><b>Ne-21 (in Qtz) Data</b></p>
+          <label><input type="checkbox" name="NEQTZCONC" value="_ne21_quartz.N21_atoms_g, ">Ne-21 (Qtz) - Concentration (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="NEQTZCONCERR" value="_ne21_quartz.delN21_atoms_g, ">Ne-21 (Qtz) - Uncertainty (int) (atoms/g) </label><br><br>
+          <label><input type="checkbox" name="NEQTZLAB" value="_ne21_quartz.system, ">Ne-21 (Qtz) - System </label><br><br>
+        </td>
+      </tr>
     </table>
 
     <table width="100%" style="table-layout: fixed;">
@@ -212,235 +231,271 @@
       </tr>
     </table>
 
-    <table>
-      <td width="100%" style="text-align: left;">
-        <br><br>
-        <h2>STEP 2: DEFINE CONDITIONALS</h2>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br><br>
+          <h2>STEP 2: DEFINE CONDITIONALS</h2>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <h3>Geographical Conditionals</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <h3>Geographical Conditionals</h3>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="number"
-          name="maxlat"
-          min="-90"
-          max="90"
-          step="any">  Maximum Latitude (DD) </label><br><br>
-        <label><input type="number"
-          name="minlat"
-          min="-90"
-          max="90"
-          step="any">  Minimum Latitude (DD) </label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="number"
+            name="maxlat"
+            min="-90"
+            max="90"
+            step="any">  Maximum Latitude (DD) </label><br><br>
+          <label><input type="number"
+            name="minlat"
+            min="-90"
+            max="90"
+            step="any">  Minimum Latitude (DD) </label><br><br>
+        </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="number"
-          name="maxlon"
-          min="-180"
-          max="180"
-          step="any">  Maximum Longitude (DD) </label><br><br>
-        <label><input type="number"
-          name="minlon"
-          min="-180"
-          max="180"
-          step="any">  Minimum Longitude (DD) </label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="number"
+            name="maxlon"
+            min="-180"
+            max="180"
+            step="any">  Maximum Longitude (DD) </label><br><br>
+          <label><input type="number"
+            name="minlon"
+            min="-180"
+            max="180"
+            step="any">  Minimum Longitude (DD) </label><br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="50%" style="text-align: left; vertical-align: top;">
-        <br>
-        <p>Use the uploader below if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY)</p>
-        <input type="file"
-          style="width: 500px; font-size: 18px;"
-          name="uploadoutline"
-          accept=".geojson, .kml"><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <br>
+          <p>Use the uploader below if you have a polygon outline <br> to select samples within (accepts .geojson or .kml ONLY)</p>
+          <input type="file"
+            style="width: 500px; font-size: 18px;"
+            name="uploadoutline"
+            accept=".geojson, .kml"><br>
+        </td>
 
-      <td width="50%" style="text-align: left; vertical-align: top;">
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br><br>
-        <h3>Sample and Site Type Coniditionals</h3>
-        <p style="font-size: 15px;">Common sample (ex: boulder) and site (ex: moraine) types to choose from <br> (select none if you do not want to filter by sample/site type)</p>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br><br>
+          <h3>Sample and Site Type Coniditionals</h3>
+          <p style="font-size: 15px;">Common sample (ex: boulder) and site (ex: moraine) types to choose from <br> (select none if you do not want to filter by sample/site type)</p>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><select name="site_type" style="width: 200px; font-size: 20px;">
-          <option value="None" disabled selected>----</option>
-          <option value="base_site.what LIKE '%moraine%'">moraine</option>
-          <option value="base_site.what LIKE '%nunatak%'">nunatak</option>
-          <option value="base_site.what LIKE '%bedrock%'">bedrock surface(s)</option>
-          <option value="(base_site.what LIKE '%terrace%' OR base_site.what LIKE '%fan%')">terrace/fan</option>
-          <option value="base_site.what LIKE '%erratic%'">erratic(s)</option>
-          <option value="None">none</option>
-        </select>  Site Type </label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><select name="site_type" style="width: 200px; font-size: 20px;">
+            <option value="None" disabled selected>----</option>
+            <option value="base_site.what LIKE '%moraine%'">moraine</option>
+            <option value="base_site.what LIKE '%nunatak%'">nunatak</option>
+            <option value="base_site.what LIKE '%bedrock%'">bedrock surface(s)</option>
+            <option value="(base_site.what LIKE '%terrace%' OR base_site.what LIKE '%fan%')">terrace/fan</option>
+            <option value="base_site.what LIKE '%erratic%'">erratic(s)</option>
+            <option value="None">none</option>
+          </select>  Site Type </label><br><br>
+        </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><select name="sample_type" style="width: 200px; font-size: 20px;">
-          <option value="None" disabled selected>----</option>
-          <option value="base_sample.what LIKE '%boulder%'">boulder</option>
-          <option value="base_sample.what LIKE '%bedrock%'">bedrock</option>
-          <option value="base_sample.what LIKE '%erratic%'">erratic</option>
-          <option value="(base_sample.what LIKE '%cobble%' OR base_sample.what LIKE '%clast%' OR base_sample.what LIKE '%pebble%')">Cobble(s)/Clast(s)/Pebble(s)</option>
-          <option value="None">none</option>
-        </select>  Sample Type </label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><select name="sample_type" style="width: 200px; font-size: 20px;">
+            <option value="None" disabled selected>----</option>
+            <option value="base_sample.what LIKE '%boulder%'">boulder</option>
+            <option value="base_sample.what LIKE '%bedrock%'">bedrock</option>
+            <option value="base_sample.what LIKE '%erratic%'">erratic</option>
+            <option value="(base_sample.what LIKE '%cobble%' OR base_sample.what LIKE '%clast%' OR base_sample.what LIKE '%pebble%')">Cobble(s)/Clast(s)/Pebble(s)</option>
+            <option value="None">none</option>
+          </select>  Sample Type </label><br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br><br>
-        <h3>Age Range Coniditional</h3>
-        <p style="font-size: 15px;">choose an age range to filter your results - example: only select LGM (~26,000 - 19,000 a) samples in the database <br> (currently the oldest age is from a sample measured by Allie Balter-Kennedy in Antarctica - congrats Allie!)</p>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br><br>
+          <h3>Age Range Coniditional</h3>
+          <p style="font-size: 15px;">choose an age range to filter your results - example: only select LGM (~26,000 - 19,000 a) samples in the database <br> (currently the oldest age is from a sample measured by Allie Balter-Kennedy in Antarctica - congrats Allie!)</p>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="number"
-          name="maxage"
-          min="0"
-          max="any"
-          step="any">  Max. Exposure Age (a)</label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="number"
+            name="maxage"
+            min="0"
+            max="any"
+            step="any">  Max. Exposure Age (a)</label><br><br>
+        </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="number"
-          name="minage"
-          min="0"
-          max="any"
-          step="any">  Min. Exposure Age (a)</label><br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="number"
+            name="minage"
+            min="0"
+            max="any"
+            step="any">  Min. Exposure Age (a)</label><br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <br><br>
-        <h3>ICE-D Application Coniditional</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br><br>
+          <h3>ICE-D Application Coniditional</h3>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><select name="application" style="width: 200px; font-size: 20px;">
-          <option value="None" disabled selected>----</option>
-          <option value="base_application.id=1">Antarctica - 01</option>
-          <option value="base_application.id=2">Alpine - 02</option>
-          <option value="base_application.id=3">Greenland - 03</option>
-          <option value="base_application.id=4">Tectonics - 04</option>
-          <option value="base_application.id=5">Production Rate Calibration Data - 05</option>
-          <option value="base_application.id=6">Mass Wasting - 06</option>
-          <option value="base_application.id=8">Cordilleran Ice Sheet - 08</option>
-          <option value="base_application.id=9">Mega Floods - 09</option>
-          <option value="base_application.id=10">Fennoscandian Ice Sheet - 10</option>
-          <option value="base_application.id=12">Laurentide Ice Sheet - 12</option>
-          <option value="None">none - 00</option>
-        </select>  options</label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><select name="application" style="width: 200px; font-size: 20px;">
+            <option value="None" disabled selected>----</option>
+            <option value="base_application.id=1">Antarctica - 01</option>
+            <option value="base_application.id=2">Alpine - 02</option>
+            <option value="base_application.id=3">Greenland - 03</option>
+            <option value="base_application.id=4">Tectonics - 04</option>
+            <option value="base_application.id=5">Production Rate Calibration Data - 05</option>
+            <option value="base_application.id=6">Mass Wasting - 06</option>
+            <option value="base_application.id=8">Cordilleran Ice Sheet - 08</option>
+            <option value="base_application.id=9">Mega Floods - 09</option>
+            <option value="base_application.id=10">Fennoscandian Ice Sheet - 10</option>
+            <option value="base_application.id=12">Laurentide Ice Sheet - 12</option>
+            <option value="None">none - 00</option>
+          </select>  options</label><br><br>
+        </td>
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table>
-      <td width="100%" style="text-align: left;">
-        <br><br>
-        <h2>STEP 3: OUTPUT SELECTIONS</h2>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <br><br>
+          <h2>STEP 3: OUTPUT SELECTIONS</h2>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <h3>DISPLAY TABLE, MAP PLOT, AND/OR SUMMED PROB. DENSITY FUNCTION (CAMELPLOT) <br> AS RESULT</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <h3>DISPLAY TABLE, MAP PLOT, AND/OR SUMMED PROB. DENSITY FUNCTION (CAMELPLOT) <br> AS RESULT</h3>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="TABLEOUT" value="tableout">  Table</label><br><br>
-        <label><input type="checkbox" name="MAPOUT" value="mapout">  Map Plot</label><br><br>
-        <label><input type="checkbox" name="CAMELOUT" value="camelout">  Summed PDF (Camelplot)</label><br><br>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="TABLEOUT" value="tableout">  Table</label><br><br>
+          <label><input type="checkbox" name="MAPOUT" value="mapout">  Map Plot</label><br><br>
+          <label><input type="checkbox" name="CAMELOUT" value="camelout">  Summed PDF (Camelplot)</label><br><br>
+        </td>
 
 
-      <td width="33.3333%" style="text-align: left; vertical-align: top;">
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <br><br>
+        </td>
 
-      <td width="33.333%" style="text-align: left; vertical-align: top;"> <!--style="border-right:1px solid #000;">-->
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;"> <!--style="border-right:1px solid #000;">-->
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-      <td width="100%" style="text-align: left;">
-        <h3>SELECT BOX BELOW IF RESULT NEEDS TO BE EXACT MATCH</h3>
-      </td>
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; padding: 0 10px;">
+          <h3>SELECT BOX BELOW IF RESULT NEEDS TO BE EXACT MATCH</h3>
+        </td>
+      </tr>
     </table>
 
-    <table width=100% style="font-size: 15px;">
-      <td width="50%" style="text-align: left; vertical-align: top;">
-        <label><input type="checkbox" name="TABLEOUT" value="tableout">  YES EXACT MATCH</label><br><br>
-        <p style="font-size: 15px;">Note: exact matches will exclude any ICE-D entries that don't have requested attributes (e.g., selecting "Sample Name, Be-10 Concentration, Cl-36 Concentration" will only return samples with [Be-10] <b>AND</b> [Cl-36]")</p>
-      </td>
+    <table width=100% style="font-size: 15px; table-layout: fixed;">
+      <tr>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <label><input type="checkbox" name="TABLEOUT" value="tableout">  YES EXACT MATCH</label><br><br>
+          <p style="font-size: 15px;">Note: exact matches will exclude any ICE-D entries that don't have requested attributes (e.g., selecting "Sample Name, Be-10 Concentration, Cl-36 Concentration" will only return samples with [Be-10] <b>AND</b> [Cl-36]")</p>
+        </td>
 
 
-      <td width="50%" style="text-align: left; vertical-align: top;">
-        <br><br>
-      </td>
+        <td style="text-align: left; vertical-align: top; padding: 0 10px;">
+          <br><br>
+        </td>
+      </tr>
     </table>
 
-    <table width="100%">
-        <td width="100%" style="text-align: center; margin-top: 1em;">
+    <table width="100%" style="table-layout: fixed;">
+      <tr>
+        <td style="text-align: center; margin-top: 1em; padding: 0 10px;">
           <br>
           <button type="submit" name="action" value="inputs" style="width: 200px; font-size: 20px;">Submit!</button>
         </td>
+      </tr>
     </table>
   </form>
-  <table width="100%" style="text-align: center;">
-    <td width="100%">
-      <form method="get" action="/askiced" style="margin-top: 1em;">
-        <input type="submit" value="Reset" style="width: 200px; font-size: 20px;">
-      </form>
-    </td>
+  <table width="100%" style="text-align: center; table-layout: fixed;">
+    <tr>
+      <td style="padding: 0 10px;">
+        <form method="get" action="/askiced" style="margin-top: 1em;">
+          <input type="submit" value="Reset" style="width: 200px; font-size: 20px;">
+        </form>
+      </td>
+    </tr>
   </table>
 
   <br>
 
-  <table width="100%">
-    <td width="100%" style="text-align: left; font-size: 20px;">
-      <div> {{query | safe}} </div>
-    </td>
+  <table width="100%" style="table-layout: fixed;">
+    <tr>
+      <td style="text-align: left; font-size: 20px; padding: 0 10px;">
+        <div> {{query | safe}} </div>
+      </td>
+    </tr>
   </table>
 
 <br>
