@@ -289,6 +289,7 @@ def askiced():
             query += '\n'
             query += join_appsitesONsite
             query += '\n'
+            query += f"WHERE {application}"
         elif application not in ['None'] and any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
             query += join_siteONsample
             query += '\n'
