@@ -87,11 +87,10 @@ def askiced():
     join_appsitesONsite = 'JOIN base_application_sites ON base_site.id = base_application_sites.site_id'
 
     att_string = ''
+    query_statement = 'SQL RESULT:'
 
 
     if action == "inputs":
-
-        query_statement = 'SQL RESULT:'
         
         #sample attributes
         if request.form.get("SAMPLENAME"):
