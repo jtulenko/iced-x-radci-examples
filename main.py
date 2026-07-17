@@ -284,20 +284,19 @@ def askiced():
         if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ['None']:
             query += join_siteONsample
             query += '\n'
-    
-        if application not in ['None'] and not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
+        elif application not in ['None'] and not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
             query += join_siteONsample
             query += '\n'
             query += join_appsitesONsite
             query += '\n'
-
-        if application not in ['None'] and any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
+        elif application not in ['None'] and any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
             query += join_siteONsample
             query += '\n'
             query += join_appsitesONsite
             query += '\n'
-
-        query += "WHERE base_sample.id != 0"
+            query += f"WHERE {application}"
+        else:
+            query += "WHERE base_sample.id != 0"
 
         if request.form["maxlat"]:
             try:
