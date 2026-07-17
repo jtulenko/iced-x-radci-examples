@@ -243,8 +243,35 @@ def askiced():
         query += sql_from
         query += '\n'
 
+        if request.form.get("application"):
+            application = str(request.form.get("application"))
+
         if any(request.form.get(name) for name in ["AGEST", "ERRST", "AGELM", "ERRLM", "AGELSDN", "ERRLSDN", "NUCLIDE"]):
             query += join_ageONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["BECONC", "BECONCERR", "BEALLAB", "ALCONC", "ALCONCERR"]):
+            query += join_bealONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["CCONC", "CCONCERR", "CLAB"]):
+            query += join_c14ONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["HEPXOLCONC", "HEPXOLCONCERR", "HEPXOLLAB"]):
+            query += join_he3pxolONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["HEQTZCONC", "HEQTZCONCERR", "HEQTZLAB"]):
+            query += join_he3qtzONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["NEQTZCONC", "NEQTZCONCERR", "NEQTZLAB"]):
+            query += join_ne21ONsample
+            query += '\n'
+
+        if any(request.form.get(name) for name in ["CLCONC", "CLCONCERR", "CLLAB"]):
+            query += join_cl36ONsample
             query += '\n'
 
         if any(request.form.get(name) for name in ["PUBDOI", "PUBCITE"]):
@@ -253,6 +280,23 @@ def askiced():
             query += join_pubONpubmatch
             query += '\n'
 
+        if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ['None']:
+            query += join_siteONsample
+            query += '\n'
+        
+        if application not in ['None'] and not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
+            query += join_siteONsample
+            query += '\n'
+            query += join_appsitesONsite
+            query += '\n'
+
+        if application not in ['None'] and any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
+            query += join_siteONsample
+            query += '\n'
+            query += join_appsitesONsite
+            query += '\n'
+
+        query += "WHERE base_sample.id != 0"
 
         if request.form["maxlat"]:
             try:
@@ -329,14 +373,6 @@ def askiced():
                 abort(400)
             query += sql_and
             query += f"base_calculatedage.t_St >= {minage}"
-            query += '\n'
-
-        application = str(request.form.get("application"))
-        if application in ['None']:
-            query += ''
-        else:
-            query += sql_and
-            query += application
             query += '\n'
     
     return render_template('askiced.html',
