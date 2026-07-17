@@ -87,7 +87,6 @@ def askiced():
     join_appsitesONsite = 'JOIN base_application_sites ON base_site.id = base_application_sites.site_id'
 
     att_string = ''
-    query_statement = 'SQL RESULT:'
 
 
     if action == "inputs":
@@ -404,8 +403,7 @@ def askiced():
             query += '\n'
     
     return render_template('askiced.html',
-                           query=query,
-                           query_statement=query_statement)
+                           query=query)
 
 
 @app.route('/icedlab')
