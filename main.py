@@ -314,7 +314,7 @@ def askiced():
             query += join_appsitesONsite
             query += '\n'
             query += f"WHERE {application}"
-        elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type in ["None"]:
+        elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type not in ["None"]:
             query += join_siteONsample
             query += '\n'
             query += "WHERE base_sample.id != 0"
