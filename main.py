@@ -63,7 +63,7 @@ def askiced():
 
     action = request.form.get("action")
 
-    query = ''
+    query = """"""
     sql_select = 'SELECT '
     sql_distinct = 'DISTINCT '
     sql_from = 'FROM base_sample '
