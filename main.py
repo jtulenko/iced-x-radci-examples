@@ -238,7 +238,17 @@ def askiced():
         query += sql_select
         query += sql_distinct
         query += att_string
+        query += 'base_sample.id'
         query += '\n'
+        query += sql_from
+        query += '\n'
+
+        if request.form.get("PUBDOI") or request.form.get("PUBCITE"):
+            query += join_pubmatchONsample
+            query += '\n'
+            query += join_pubONpubmatch
+            query += '\n'
+
 
         if request.form["maxlat"]:
             try:
