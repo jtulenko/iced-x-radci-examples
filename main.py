@@ -280,24 +280,53 @@ def askiced():
         
 
         application = str(request.form.get("application"))
+        site_type = str(request.form.get("site_type"))
 
-        if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ['None']:
+        if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type in ["None"]:
             query += join_siteONsample
             query += '\n'
-        elif application not in ['None'] and not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
-            query += join_siteONsample
-            query += '\n'
-            query += join_appsitesONsite
-            query += '\n'
-            query += f"WHERE {application}"
-        elif application not in ['None'] and any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]):
+            query += "WHERE base_sample.id != 0"
+        elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type in ["None"]:
             query += join_siteONsample
             query += '\n'
             query += join_appsitesONsite
             query += '\n'
             query += f"WHERE {application}"
+        elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type not in ["None"]:
+            query += join_siteONsample
+            query += '\n'
+            query += "WHERE base_sample.id != 0"
+        elif any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type not in ["None"]:
+            query += join_siteONsample
+            query += '\n'
+            query += join_appsitesONsite
+            query += '\n'
+            query += f"WHERE {application}"
+        elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type in ["None"]:
+            query += join_siteONsample
+            query += '\n'
+            query += join_appsitesONsite
+            query += '\n'
+            query += f"WHERE {application}"
+        elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application not in ["None"] and site_type not in ["None"]:
+            query += join_siteONsample
+            query += '\n'
+            query += join_appsitesONsite
+            query += '\n'
+            query += f"WHERE {application}"
+        elif not any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type in ["None"]:
+            query += join_siteONsample
+            query += '\n'
+            query += "WHERE base_sample.id != 0"
         else:
             query += "WHERE base_sample.id != 0"
+
+        if site_type in ['None']:
+            query += ''
+        else:
+            query += sql_and
+            query += site_type
+            query += '\n'
 
         if request.form["maxlat"]:
             try:
@@ -341,14 +370,6 @@ def askiced():
             if not (filename.endswith(".geojson") or filename.endswith(".kml")):
                 abort(400)
         #this might turn into a pain so I am going to just figure this out later
-                
-        site_type = str(request.form.get("site_type"))
-        if site_type in ['None']:
-            query += ''
-        else:
-            query += sql_and
-            query += site_type
-            query += '\n'
         
         sample_type = str(request.form.get("sample_type"))
         if sample_type in ['None']:
