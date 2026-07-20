@@ -411,6 +411,16 @@ def icedlab():
     
     return render_template('icedlab.html')
 
+@app.route('/icedburial')
+def icedburial():
+
+    return render_template('icedburial.html')
+
+@app.route('/radcixosu')
+def radcixosu():
+
+    return render_template('radcixosu.html')
+
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
