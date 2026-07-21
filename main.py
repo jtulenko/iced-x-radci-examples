@@ -421,6 +421,11 @@ def radcixosu():
 
     return render_template('radcixosu.html')
 
+@app.route('icedradcicures')
+def icedradcicures():
+
+    return render_template('icedradcicures.html')
+
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
