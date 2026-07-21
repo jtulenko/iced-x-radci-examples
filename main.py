@@ -421,7 +421,7 @@ def radcixosu():
 
     return render_template('radcixosu.html')
 
-@app.route('icedradcicures')
+@app.route('/icedradcicures')
 def icedradcicures():
 
     return render_template('icedradcicures.html')
