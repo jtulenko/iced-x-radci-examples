@@ -108,7 +108,7 @@ def core_plot(core_data):
     p.segment(x0=agemin, y0=depthmin, x1=agemin, y1=depthmax, line_width=1, line_color='#d3d3d3')
     p.segment(x0=agemax, y0=depthmin, x1=agemax, y1=depthmax, line_width=1, line_color='#d3d3d3')
     scatter = p.scatter(x='x', y='ymin', size=20, source=data, fill_alpha=0, line_alpha=0)
-    p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Sample name", "@sample", "Core name", "@core")]))
+    p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Sample name", "@sample")]))
 
     plot_script, plot_div = components(p)
 
