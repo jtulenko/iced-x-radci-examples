@@ -105,12 +105,13 @@
       </td>
     </tr>
   </table>
+  <br>
 
   <table width = 100%>
     <tr>
       <td>
         <h3>RAD-CI Sediment Core Age-Depth Plotting</h3>
-        <p>Choose from a select list of Sediment Cores to generate interactive age-depth plots</p>
+        <p>Choose from a select list of Sediment Cores to generate interactive age-depth plots (minimum 8 samples per core)</p>
       </td>
     </tr>
   </table>
@@ -129,7 +130,7 @@
             <br>
             <br>
             <form method="post">
-              <label for="core_data">RAD-CI Cores (8+ samples)</label>
+              <label for="core_data">Cores List</label>
               <select name="core_data">
                 <option value="" disabled selected>----</option>
                 {% for sed_core in sed_core_list %}

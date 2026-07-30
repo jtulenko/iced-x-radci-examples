@@ -24,7 +24,7 @@ import dbconnect
 def rsl_plot(rsl_plot):
     rsl_plot = rsl_plot
 
-    rsl_plot_query = f"""SELECT base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, maxage_1sd_calyrBP, base_rsl_info.sealevel_index_elev_m, base_rsl_info.sealevel_index_elev_m_err
+    rsl_plot_query = f"""SELECT base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, base_calibratedage.maxage_1sd_calyrBP, base_rsl_info.sealevel_index_elev_m, base_rsl_info.sealevel_index_elev_m_err
         FROM base_sample
         LEFT JOIN base_calibratedage ON base_sample.id = base_calibratedage.sample_id
         LEFT JOIN base_rsl_info ON base_sample.id = base_rsl_info.sample_id
@@ -64,6 +64,51 @@ def rsl_plot(rsl_plot):
     scatter = p.scatter(x='x', y='y', size=20, source=data, fill_alpha=0, line_alpha=0)
     p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Sample name", "@sample")]))
 
+
+    plot_script, plot_div = components(p)
+
+    return components(p)
+
+def core_plot(core_data):
+    core_data = core_data
+
+    core_query = f"""SELECT DISTINCT base_core.name, base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, base_calibratedage.maxage_1sd_calyrBP, base_sample.sample_top_depth_m, base_sample.sample_bottom_depth_m
+            FROM base_core
+            JOIN base_sample ON base_sample.core_id = base_core.id
+            JOIN base_calibratedage ON base_sample.id = base_calibratedage.sample_id
+            WHERE base_core.name LIKE "%{core_data}%"
+            AND base_calibratedage.reservoir_corr_id = 1"""
+    
+    core_result = dbconnect.querier_radci(core_query)
+
+    core = core_result[1:,0]
+    sample = core_result[1:,1]
+    age = core_result[1:,2].astype(float)
+    agemin = core_result[1:,3].astype(float)
+    agemax = core_result[1:,4].astype(float)
+    depthmin = core_result[1:,5].astype(float)
+    depthmax = core_result[1:,6].astype(float)
+
+    data = {
+        'x': array(age),
+        'xmin': array(agemin),
+        'xmax': array(agemax),
+        'ymin': array(depthmin),
+        'ymax': array(depthmax),
+        'sample': array(sample),
+        'core': array(core)
+    }
+
+    p = figure(title=f"{core_data} Core", width=855, height=540, x_axis_label="Cal yr BP", y_axis_label="Core Depth (m)", tools="pan,wheel_zoom,save,reset", x_range=((min(agemin) * 0.9), (max(agemax)*1.1)), y_range=((max(depthmax)*1.1), 0))
+    p.rect(x=(agemax + agemin)/2, y=(depthmin + depthmax)/2, width=agemax - agemin, height=depthmax - depthmin, fill_alpha=0.75, fill_color='#d3d3d3')
+    p.segment(x0=age, y0=depthmin, x1=age, y1=depthmax, line_width=3, line_color='#014421')
+    p.segment(x0=agemin, y0=(depthmin + depthmax)/2, x1=agemax, y1=(depthmin + depthmax)/2, line_width=3, line_color='#014421')
+    p.segment(x0=agemin, y0=depthmin, x1=agemax, y1=depthmin, line_width=1, line_color='#d3d3d3')
+    p.segment(x0=agemin, y0=depthmax, x1=agemax, y1=depthmax, line_width=1, line_color='#d3d3d3')
+    p.segment(x0=agemin, y0=depthmin, x1=agemin, y1=depthmax, line_width=1, line_color='#d3d3d3')
+    p.segment(x0=agemax, y0=depthmin, x1=agemax, y1=depthmax, line_width=1, line_color='#d3d3d3')
+    scatter = p.scatter(x='x', y='ymin', size=20, source=data, fill_alpha=0, line_alpha=0)
+    p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Sample name", "@sample", "Core name", "@core")]))
 
     plot_script, plot_div = components(p)
 
