@@ -33,11 +33,20 @@ def radciexamples():
     rsl_site_query = f"""SELECT DISTINCT base_rsl_site.name
             FROM base_rsl_site"""
     
-    query_result = dbconnect.querier_radci(rsl_site_query)
+    sed_core_query = f"""SELECT DISTINCT base_core.name
+            FROM base_core
+            JOIN base_sample ON base_sample.core_id = base_core.id
+            AND base_sample.core_id IN
+                (SELECT base_sample.core_id FROM base_sample GROUP BY base_sample.core_id HAVING COUNT(*) >= 8)"""
+    
+    rsl_query_result = dbconnect.querier_radci(rsl_site_query)
+    sedcore_query_result = dbconnect.querier_radci(sed_core_query)
 
-    rsl_site_list = query_result[1:,0].astype(str).tolist()
+    rsl_site_list = rsl_query_result[1:,0].astype(str).tolist()
+    sed_core_list = sedcore_query_result[1:,0].astype(str).tolist()
 
     script1,div1 = "", ""
+    script2,div2 = "", ""
 
     if request.method == "POST":
         action = request.form.get("action")
@@ -49,7 +58,9 @@ def radciexamples():
 
     return render_template('radciexamples.html',
                            script1=script1, div1=div1,
-                           rsl_site_list=rsl_site_list)
+                           rsl_site_list=rsl_site_list,
+                           script2=script2, div2=div2,
+                           sed_core_list=sed_core_list)
 
 
 @app.route('/icedxradci')
