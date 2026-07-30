@@ -56,6 +56,11 @@ def radciexamples():
 
             script1, div1 = plotting.rsl_plot(rsl_site)
 
+        if action == "core_plot":
+            core_data = str(request.form.get("core_data"))
+
+            script2, div2 = plotting.core_plot(core_data)
+
     return render_template('radciexamples.html',
                            script1=script1, div1=div1,
                            rsl_site_list=rsl_site_list,
