@@ -427,10 +427,32 @@ def icedlab():
     
     return render_template('icedlab.html')
 
-@app.route('/icedburial')
+@app.route('/icedburial', methods=["GET", "POST"])
 def icedburial():
 
-    return render_template('icedburial.html')
+    burial_isochron_query = f"""SELECT DISTINCT base_core.name
+            FROM base_core
+            JOIN base_site ON base_core.site_id = base_site.id
+            JOIN base_application_sites ON base_site.id = base_application_sites.site_id
+            WHERE base_application_sites.application_id = 14"""
+    
+    burial_query_result = dbconnect.querier_iced(burial_isochron_query)
+    
+    burial_site_list = burial_query_result[1:,0].astype(str).tolist()
+    
+    script1,div1 = "", ""
+    
+    if request.method == "POST":
+        action = request.form.get("action")
+
+        if action == "burial_isochron":
+            burial_site = str(request.form.get("burial_site"))
+
+            script1, div1 = plotting.rsl_plot(burial_site)
+
+    return render_template('icedburial.html',
+                           script1=script1, div1=div1,
+                           burial_site_list=burial_site_list)
 
 @app.route('/radcixosu')
 def radcixosu():

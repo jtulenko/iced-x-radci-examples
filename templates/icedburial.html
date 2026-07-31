@@ -61,6 +61,41 @@
     </td>
   </table>
 
+  <table width = 100%, height = 600px>
+    <tr>
+      <td width=895px, valign="top", halign="left">
+          <table>
+            <tr><td align=center><div> {{script1 | safe}} {{ div1 | safe }} </div></td></tr>
+          </table>
+      </td>
+      <td width=295px, valign="top", halign="right">
+          <table width=300px>
+            <tr><td><b>Burial Site Isochron Selection</b></td></tr>
+            <tr><td align=center>
+            <br>
+            <br>
+            <form method="post">
+              <label for="burial_site">Burial Site</label>
+              <select name="burial_site">
+                <option value="" disabled selected>----</option>
+                {% for burial_site in burial_site_list %}
+                  <option value="{{ burial_site }}">{{ burial_site }}</option><br>
+                {% endfor %}
+              </select><br><br>
+
+              <button type="submit" name="action" value="burial_isochron">Generate Plot</button>
+            </form>
+            <form method="get" action="/icedburial" style="margin-top: 1em;">
+              <input type="submit" value="Reset">
+            </form>
+          
+            </td></tr>
+          </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+
   <table width = 100%  style="table-layout: fixed;" height = 600px>
     
   </table>
