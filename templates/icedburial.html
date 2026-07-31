@@ -71,7 +71,7 @@
     </tr>
   </table>
 
-  <table width = 100% style="table-layout: fixed; font-size: 25px;">
+  <table width = 100% style="table-layout: fixed; font-size: 20px;">
     <tr>
       <td style="text-align: left; padding: 0 10px;">
         <label for="burial_site">Burial Isochron</label>
@@ -81,7 +81,6 @@
           <option value="{{ burial_site }}">{{ burial_site }}</option><br>
           {% endfor %}
         </select>
-        <br>
       </td>
     </tr>
   </table>
@@ -89,8 +88,18 @@
   <table width = 100% style="table-layout: fixed; font-size: 15px;">
     <tr>
       <td style="text-align: left; padding: 0 10px;">
-        <label><input type="checkbox" name="pretype" value="pretype">Preburial History </label><br><br>
+        <br><br>
+        <label><input type="checkbox" name="pretype" value="pretype">Preburial History </label><br>
         <label><input type="checkbox" name="no_3sigma" value="no_3sigma">Include 3-sig Outliers? </label>
+      </td>
+    </tr>
+  </table>
+
+  <table width = 100% style="table-layout: fixed;">
+    <tr>
+      <td style="text-align: center; padding: 0 10px;">
+        <br><br>
+        <button type="submit" name="action" value="burial_isochron">Generate Plot</button>
       </td>
     </tr>
   </table>
