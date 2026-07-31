@@ -60,7 +60,9 @@
     <p>Will Odom and Joe Tulenko to develop this out</p>
     </td>
   </table>
+  <br>
 
+  <form method="post">
   <table width = 100%, height = 300px>
     <tr>
       <td width=100%, valign="top", halign="right">
@@ -69,7 +71,6 @@
           <tr><td align=center>
           <br>
           <br>
-          <form method="post">
             <label for="burial_site">Burial Isochron</label>
             <select name="burial_site">
               <option value="" disabled selected>----</option>
@@ -78,15 +79,21 @@
               {% endfor %}
             </select><br><br>
 
-            <button type="submit" name="action" value="burial_isochron">Generate Plot</button>
-          </form>
-          <form method="get" action="/icedburial" style="margin-top: 1em;">
-            <input type="submit" value="Reset">
-          </form>
-        
+            <button type="submit" name="action" value="burial_isochron">Generate Plot</button>        
           </td></tr>
         </table>
       </td>      
+    </tr>
+  </table>
+  </form>
+
+  <table width="100%" style="table-layout: fixed;" height=100px>
+    <tr>
+      <td>
+        <form method="get" action="/icedburial" style="margin-top: 1em;">
+          <input type="submit" value="Reset">
+        </form>
+      </td>
     </tr>
   </table>
 
