@@ -446,6 +446,12 @@ def icedburial():
         action = request.form.get("action")
 
         if action == "burial_isochron":
+
+            if request.form.get("pretype"):
+                pretype = 0
+            if request.form.get("no_3sigma"):
+                no_3sigma = 0
+
             burial_site = str(request.form.get("burial_site"))
 
             script1, div1 = plotting.rsl_plot(burial_site)
