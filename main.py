@@ -462,15 +462,10 @@ def icedburial():
             if request.form.get("plot_inh"):
                 plot_inh = 1
 
+
             if request.form["tau10_mean"]:
                 try:
                     tau10_mean = float(request.form["tau10_mean"])
-                except ValueError:
-                    abort(400)
-
-            if request.form["tau10_unc"]:
-                try:
-                    tau10_unc = float(request.form["tau10_unc"])
                 except ValueError:
                     abort(400)
 
@@ -480,9 +475,77 @@ def icedburial():
                 except ValueError:
                     abort(400)
 
+            if request.form["Rsurf_mean"]:
+                try:
+                    Rsurf_mean = float(request.form["Rsurf_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["Rpost_mean"]:
+                try:
+                    Rpost_mean = float(request.form["Rpost_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["rho_mean"]:
+                try:
+                    rho_mean = float(request.form["rho_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["Lambda_mean"]:
+                try:
+                    Lambda_mean = float(request.form["Lambda_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["p10_SLHL_mean"]:
+                try:
+                    p10_SLHL_mean = float(request.form["p10_SLHL_mean"])
+                except ValueError:
+                    abort(400)
+
+
+
+            if request.form["tau10_unc"]:
+                try:
+                    tau10_unc = float(request.form["tau10_unc"])
+                except ValueError:
+                    abort(400)
+
             if request.form["tau26_unc"]:
                 try:
                     tau26_unc = float(request.form["tau26_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["Rsurf_unc"]:
+                try:
+                    Rsurf_unc = float(request.form["Rsurf_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["Rpost_unc"]:
+                try:
+                    Rpost_unc = float(request.form["Rpost_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["rho_unc"]:
+                try:
+                    rho_unc = float(request.form["rho_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["Lambda_unc"]:
+                try:
+                    Lambda_unc = float(request.form["Lambda_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["p10_SLHL_unc"]:
+                try:
+                    p10_SLHL_unc = float(request.form["p10_SLHL_unc"])
                 except ValueError:
                     abort(400)
 

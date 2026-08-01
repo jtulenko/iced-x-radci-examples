@@ -99,33 +99,121 @@
       </td>
 
       <td style="text-align: left; padding: 0 10px;">
+        <br><br>
         <label><input type="number"
           name="tau10_mean"
           min="0"
           max="10000000"
           value="2005000"
-          step="any">  &tau; Be-10 </label><br><br>
-
-        <label><input type="number"
-          name="tau10_unc"
-          min="0"
-          max="1000000"
-          value="17000"
-          step="any">  &sigma; Be-10 unc </label><br><br>
+          step="any">  &tau; Be-10
+        </label><br><br>
 
         <label><input type="number"
           name="tau26_mean"
           min="0"
           max="10000000"
           value="1021000"
-          step="any">  &tau; Al-26 </label><br><br>
+          step="any">  &tau; Al-26
+        </label><br><br>
 
+        <label><input type="number"
+          name="Rsurf_mean"
+          min="0"
+          max="50"
+          value="6.8"
+          step="any">  Surface P[N26] / P[N10]
+        </label><br><br>
+
+        <label><input type="number"
+          name="Rpost_mean"
+          min="0"
+          max="50"
+          value="8.3"
+          step="any"> Postburial P[N26] / P[N10]
+        </label><br><br>
+
+        <label><input type="number"
+          name="rho_mean"
+          min="0"
+          max="10"
+          value="2.65"
+          step="any"> &rho; (g/cm3)
+        </label><br><br>
+
+        <label><input type="number"
+          name="Lambda_mean"
+          min="0"
+          max="500"
+          value="160"
+          step="any"> &Lambda; (g/cm2)
+        </label><br><br>
+
+        <label><input type="number"
+          name="p10_SLHL_mean"
+          min="0"
+          max="50"
+          value="3.84"
+          step="any"> N10 SLHL Production Rate
+        </label><br><br>
+      </td>
+
+      <td style="text-align: left; padding: 0 10px;">
+        <br><br>
         <label><input type="number"
           name="tau10_unc"
           min="0"
+          max="1000000"
+          value="17000"
+          step="any">  &sigma; Be-10 unc
+        </label><br><br>
+
+        <label><input type="number"
+          name="tau26_unc"
+          min="0"
           max="10000000"
-          value="2005000"
-          step="any">  &sigma; Al-26 unc </label><br><br>
+          value="24000"
+          step="any">  &sigma; Al-26 unc
+        </label><br><br>
+
+        <label><input type="number"
+          name="Rsurf_unc"
+          min="0"
+          max="50"
+          value="0.6"
+          step="any"> &sigma; Surface P[N26] / P[N10]
+        </label><br><br>
+
+        <label><input type="number"
+          name="Rpost_unc"
+          min="0"
+          max="50"
+          value="0.8"
+          step="any"> &sigma; Postburial P[N26] / P[N10]
+        </label><br><br>
+
+        <label><input type="number"
+          name="rho_unc"
+          min="0"
+          max="10"
+          value="0"
+          step="any"> &sigma; &rho; (g/cm3)
+        </label><br><br>
+
+        <label><input type="number"
+          name="Lambda_unc"
+          min="0"
+          max="500"
+          value="10"
+          step="any"> &sigma; &Lambda; (g/cm2)
+        </label><br><br>
+
+        <label><input type="number"
+          name="p10_SLHL_unc"
+          min="0"
+          max="50"
+          value="0.27"
+          step="any"> &sigma; N10 SLHL Production Rate
+        </label><br><br>
       </td>
     </tr>
   </table>
