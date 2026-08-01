@@ -462,6 +462,30 @@ def icedburial():
             if request.form.get("plot_inh"):
                 plot_inh = 1
 
+            if request.form["tau10_mean"]:
+                try:
+                    tau10_mean = float(request.form["tau10_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["tau10_unc"]:
+                try:
+                    tau10_unc = float(request.form["tau10_unc"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["tau26_mean"]:
+                try:
+                    tau26_mean = float(request.form["tau26_mean"])
+                except ValueError:
+                    abort(400)
+
+            if request.form["tau26_unc"]:
+                try:
+                    tau26_unc = float(request.form["tau26_unc"])
+                except ValueError:
+                    abort(400)
+
             burial_site = str(request.form.get("burial_site"))
 
             script1, div1 = plotting.rsl_plot(burial_site)
