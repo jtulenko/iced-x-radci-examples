@@ -451,6 +451,16 @@ def icedburial():
                 pretype = 0
             if request.form.get("no_3sigma"):
                 no_3sigma = 0
+            if request.form.get("external_uncertainty"):
+                external_uncertainty = 1
+            if request.form.get("force_zero_pb"):
+                force_zero_pb = 1
+            if request.form.get("MC_line_plot"):
+                MC_line_plot = 1
+            if request.form.get("MC_pt_plot"):
+                MC_line_plot = 1
+            if request.form.get("plot_inh"):
+                plot_inh = 1
 
             burial_site = str(request.form.get("burial_site"))
 

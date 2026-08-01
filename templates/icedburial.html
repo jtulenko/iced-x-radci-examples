@@ -89,8 +89,17 @@
     <tr>
       <td style="text-align: left; padding: 0 10px;">
         <br><br>
-        <label><input type="checkbox" name="pretype" value="pretype">Preburial History </label><br>
-        <label><input type="checkbox" name="no_3sigma" value="no_3sigma">Include 3-sig Outliers? </label>
+        <label><input type="checkbox" name="pretype" value="pretype">Preburial History </label><br><br>
+        <label><input type="checkbox" name="no_3sigma" value="no_3sigma">Include 3-sig Outliers </label><br><br>
+        <label><input type="checkbox" name="external_uncertainty" value="external_uncertainty">Calculate External Uncertainty </label><br><br>
+        <label><input type="checkbox" name="force_zero_pb" value="force_zero_pb">Force zero postburial production </label><br><br>
+        <label><input type="checkbox" name="MC_line_plot" value="MC_line_plot">Plot all MC lines </label><br><br>
+        <label><input type="checkbox" name="MC_pt_plot" value="MC_pt_plot">Plot all MC dots </label><br><br>
+        <label><input type="checkbox" name="plot_inh" value="plot_inh">Plot inherited isochron line </label><br><br>
+      </td>
+
+      <td>
+        
       </td>
     </tr>
   </table>
@@ -101,29 +110,6 @@
         <br><br>
         <button type="submit" name="action" value="burial_isochron">Generate Plot</button>
       </td>
-    </tr>
-  </table>
-
-  <table>
-    <tr>
-      <td width=100%, valign="top", halign="right">
-        <table width=300px>
-          <tr><td><b>Burial Site Isochron Selection</b></td></tr>
-          <tr><td align=center>
-          <br>
-          <br>
-            <label for="burial_site">Burial Isochron</label>
-            <select name="burial_site">
-              <option value="" disabled selected>----</option>
-              {% for burial_site in burial_site_list %}
-                <option value="{{ burial_site }}">{{ burial_site }}</option><br>
-              {% endfor %}
-            </select><br><br>
-
-            <button type="submit" name="action" value="burial_isochron">Generate Plot</button>        
-          </td></tr>
-        </table>
-      </td>      
     </tr>
   </table>
   </form>
