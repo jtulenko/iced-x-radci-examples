@@ -422,7 +422,7 @@ def askiced():
                 query += '\n'
 
             #if request.form.get["TABLEOUT"]:
-            #table_result = plotting.askiced_table(query)
+            table_result = plotting.askiced_table(query)
 
             #if not any(request.form.get(name) for name in ["TABLEOUT"]):
                 #table_result = "YOU FORGOT TO SELECT AN OUTPUT TYPE"
