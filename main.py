@@ -417,9 +417,14 @@ def askiced():
             query += sql_and
             query += f"base_calculatedage.t_St >= {minage}"
             query += '\n'
+
+        if request.form.get["TABLEOUT"]:
+            table_result = plotting.askiced_table(query)
+
     
     return render_template('askiced.html',
-                           query=query)
+                           query=query,
+                           table_result=table_result)
 
 
 @app.route('/icedlab')

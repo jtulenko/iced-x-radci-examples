@@ -18,6 +18,7 @@ import geopandas as gpd
 import json
 from cmcrameri import cm
 import gc
+from tabulate import tabulate
 
 import dbconnect
 
@@ -298,6 +299,14 @@ def get_shoreline():
         geojson_data = json.load(f)
 
     return GeoJSONDataSource(geojson=json.dumps(geojson_data))
+
+def askiced_table(askiced_query):
+    askiced_query = askiced_query
+    askiced_result = dbconnect.querier_iced(askiced_query)
+    
+    data_table = tabulate(askiced_result, headers='keys', tablefmt='html', showindex=False)
+
+    return data_table
 
 def get_rsl_input(rsl_input):
     rsl_input = rsl_input
