@@ -304,7 +304,7 @@ def askiced_table(askiced_query):
     askiced_query = askiced_query
     askiced_result = dbconnect.querier_iced(askiced_query)
     
-    data_table = tabulate(askiced_result, headers='keys', tablefmt='html', showindex=False)
+    data_table = tabulate(askiced_result, headers='firstrow', tablefmt='github', showindex=False)
 
     return data_table
 
