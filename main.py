@@ -419,8 +419,8 @@ def askiced():
                 query += f"base_calculatedage.t_St >= {minage}"
                 query += '\n'
 
-            if request.form.get["TABLEOUT"]:
-                table_result = plotting.askiced_table(query)
+            #if request.form.get["TABLEOUT"]:
+            table_result = plotting.askiced_table(query)
 
     
     return render_template('askiced.html',
