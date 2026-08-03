@@ -77,7 +77,7 @@ def icedxradci():
 @app.route('/askiced', methods=["GET", "POST"])
 def askiced():
 
-    
+    table_result = ""
 
     query = """"""
     sql_select = 'SELECT '
