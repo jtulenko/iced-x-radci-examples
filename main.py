@@ -259,10 +259,6 @@ def askiced():
             query += sql_from
             query += '\n'
 
-            if any(request.form.get(name) for name in ["AGEST", "ERRST", "AGELM", "ERRLM", "AGELSDN", "ERRLSDN", "NUCLIDE"]):
-                query += join_ageONsample
-                query += '\n'
-
             if any(request.form.get(name) for name in ["BECONC", "BECONCERR", "BEALLAB", "ALCONC", "ALCONCERR"]):
                 query += join_bealONsample
                 query += '\n'
@@ -297,6 +293,12 @@ def askiced():
 
             application = str(request.form.get("application"))
             site_type = str(request.form.get("site_type"))
+            age_min = request.form.get("minage")
+            age_max = request.form.get("maxage")
+
+            if any(request.form.get(name) for name in ["AGEST", "ERRST", "AGELM", "ERRLM", "AGELSDN", "ERRLSDN", "NUCLIDE"]) or age_min or age_max:
+                query += join_ageONsample
+                query += '\n'
 
             if any(request.form.get(name) for name in ["SITESHRTNM", "SITELGNM", "SITEWHAT"]) and application in ["None"] and site_type in ["None"]:
                 query += join_siteONsample
