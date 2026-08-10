@@ -361,7 +361,7 @@ def geo_map(app_id, path):
             'name': array(name)}
 
 
-    p = figure(width=800, height=800)
+    p = figure(width=800, height=800, x_range=(-3000000, 3000000), y_range=(-3000000, 3000000),)
     #p.image(image=[map_z])
     p.patches(
         xs="xs",
