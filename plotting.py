@@ -317,9 +317,7 @@ def geo_map(app_id):
     list_result = dbconnect.querier_radci(core_query)
 
     y1 = list_result[1:,0].astype(float)
-    #y1 = numpy.log(numpy.tan((90 + y1) * numpy.pi/360.0)) * 6378137
     x1 = list_result[1:,1].astype(float)
-    #x1 = x1 * (6378137 * numpy.pi/180)
     name = list_result[1:,2]
 
     transformer = Transformer.from_crs(
@@ -329,27 +327,14 @@ def geo_map(app_id):
     )
 
     x, y = transformer.transform(x1, y1)
-    
-    # #The input arg will maybe be lat lon name tuple (x,y,z)
-    # df1=pandas.DataFrame(list(result))
-    # #y1= log(tan((df1[0] + 90) / 360 * pi())) * 111319.490778 / pi() * 180
-    # y1=df1[0]
-    # y1=y1.astype('float64')
-    # y1=numpy.log(numpy.tan((90 + y1) * numpy.pi/360.0)) * 6378137
-    # x1=df1[1]
-    # x1=x1.astype('float64')
-    # x1=x1 * (6378137 * numpy.pi/180)
-    # name=df1[2]
 
     data = {'lat': array(y),
             'lon': array(x),
             'name': array(name)}
-    
 
 
     p = figure(width=800, height=800)
     p.scatter(x='lon',y='lat', source=data)
-    #p.add_tile(xyz.OpenStreetMap.Mapnik)
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name")]))
 
     plot_script, plot_div = components(p)
@@ -368,9 +353,7 @@ def map_tester(app_id):
     list_result = dbconnect.querier_radci(core_query)
 
     y1 = list_result[1:,0].astype(float)
-    #y1 = numpy.log(numpy.tan((90 + y1) * numpy.pi/360.0)) * 6378137
     x1 = list_result[1:,1].astype(float)
-    #x1 = x1 * (6378137 * numpy.pi/180)
     name = list_result[1:,2]
 
     transformer = Transformer.from_crs(

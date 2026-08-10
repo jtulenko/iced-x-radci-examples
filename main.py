@@ -614,7 +614,7 @@ def radciwebmap():
     table_result = plotting.map_tester(antmarine)
 
     return render_template('radciwebmap.html',
-                           scrip1 = script1, div1 = div1,
+                           script1 = script1, div1 = div1,
                            table_result = table_result)
 
 if __name__ == '__main__':
