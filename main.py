@@ -611,11 +611,9 @@ def radciwebmap():
 
     script1, div1 = plotting.geo_map(antmarine)
 
-    table_result = plotting.map_tester(antmarine)
-
     return render_template('radciwebmap.html',
-                           script1 = script1, div1 = div1,
-                           table_result = table_result)
+                           script1 = script1, div1 = div1
+                           )
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App

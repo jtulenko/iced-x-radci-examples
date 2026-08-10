@@ -340,34 +340,3 @@ def geo_map(app_id):
     plot_script, plot_div = components(p)
 
     return components(p)
-
-def map_tester(app_id):
-    app_id = app_id
-
-    core_query = f"""SELECT DISTINCT base_core.lat_DD, base_core.lon_DD, base_core.name
-            FROM base_core
-            JOIN base_sample ON base_sample.core_id = base_core.id
-            JOIN base_sample_application ON base_sample.id = base_sample_application.sample_id
-            WHERE base_sample_application.application_id = {app_id}"""
-    
-    list_result = dbconnect.querier_radci(core_query)
-
-    y1 = list_result[1:,0].astype(float)
-    x1 = list_result[1:,1].astype(float)
-    name = list_result[1:,2]
-
-    transformer = Transformer.from_crs(
-        "EPSG:4326",
-        "EPSG:3412",
-        always_xy=True
-    )
-
-    x, y = transformer.transform(x1, y1)
-
-    data = {'lat': array(y),
-            'lon': array(x),
-            'name': array(name)}
-    
-    data_table = tabulate(data, tablefmt='github', showindex=False)
-
-    return data_table
