@@ -3,7 +3,7 @@ from scipy.odr import ODR, Model, RealData
 #from matplotlib.patches import Ellipse
 import numpy as np
 from bokeh.plotting import figure, show, ColumnDataSource
-from bokeh.models import Span, HoverTool, ColorBar, LinearColorMapper, GeoJSONDataSource, ellipse
+from bokeh.models import Span, HoverTool, ColorBar, LinearColorMapper, GeoJSONDataSource, Ellipse
 from bokeh.embed import components
 from bokeh.io import output_file, show
 from bokeh.palettes import Viridis256
