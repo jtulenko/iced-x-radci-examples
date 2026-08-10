@@ -15,7 +15,7 @@ import json
 from cmcrameri import cm
 import gc
 from tabulate import tabulate
-import xyzservices.providers as xyz
+from pyproj import Transformer
 
 import dbconnect
 
@@ -317,10 +317,18 @@ def geo_map(app_id):
     list_result = dbconnect.querier_radci(core_query)
 
     y1 = list_result[1:,0].astype(float)
-    y1 = numpy.log(numpy.tan((90 + y1) * numpy.pi/360.0)) * 6378137
+    #y1 = numpy.log(numpy.tan((90 + y1) * numpy.pi/360.0)) * 6378137
     x1 = list_result[1:,1].astype(float)
-    x1 = x1 * (6378137 * numpy.pi/180)
+    #x1 = x1 * (6378137 * numpy.pi/180)
     name = list_result[1:,2]
+
+    transformer = Transformer.from_crs(
+        "EPSG:4326",
+        "EPSG:3412",
+        always_xy=True
+    )
+
+    x, y = transformer(x1, y1)
     
     # #The input arg will maybe be lat lon name tuple (x,y,z)
     # df1=pandas.DataFrame(list(result))
@@ -333,14 +341,15 @@ def geo_map(app_id):
     # x1=x1 * (6378137 * numpy.pi/180)
     # name=df1[2]
 
-    data = {'lat': array(y1),
-            'lon': array(x1),
+    data = {'lat': array(y),
+            'lon': array(x),
             'name': array(name)}
+    
 
-    p = figure(width=800, height=600, x_range=(-19926188, 19926188), y_range=(-16967796, 16967796),
-           x_axis_type="mercator", y_axis_type="mercator")
+
+    p = figure(width=800, height=800)
     p.scatter(x='lon',y='lat', source=data, size = 8, fill_color='grey', fill_alpha=0.9, line_color='black', line_alpha=6, marker="circle")
-    p.add_tile(xyz.OpenStreetMap.Mapnik)
+    #p.add_tile(xyz.OpenStreetMap.Mapnik)
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name")]))
 
     plot_script, plot_div = components(p)
