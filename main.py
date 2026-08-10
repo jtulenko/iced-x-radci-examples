@@ -604,6 +604,10 @@ def icedradcicures():
 
     return render_template('icedradcicures.html')
 
+@app.route('/radciwebmap')
+def radciwebmap():
+
+    return render_template('radciwebmap.html')
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
