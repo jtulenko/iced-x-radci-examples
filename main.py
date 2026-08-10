@@ -607,7 +607,9 @@ def icedradcicures():
 @app.route('/radciwebmap')
 def radciwebmap():
 
-    script1, div1 = plotting.geo_map(1)
+    antmarine = 1
+
+    script1, div1 = plotting.geo_map(antmarine)
 
     return render_template('radciwebmap.html',
                            scrip1 = script1, div1 = div1)
