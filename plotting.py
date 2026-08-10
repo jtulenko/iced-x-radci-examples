@@ -328,7 +328,7 @@ def geo_map(app_id):
         always_xy=True
     )
 
-    x, y = transformer(x1, y1)
+    x, y = transformer.transform(x1, y1)
     
     # #The input arg will maybe be lat lon name tuple (x,y,z)
     # df1=pandas.DataFrame(list(result))
