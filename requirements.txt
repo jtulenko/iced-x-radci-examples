@@ -12,3 +12,5 @@ gunicorn
 cmcrameri
 dask
 tabulate
+math
+scipy.odr

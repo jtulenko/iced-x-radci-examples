@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, abort
 from tabulate import tabulate
 
 import dbconnect
+import pysochronV1_icedburial
 
 app = Flask(__name__)
 
@@ -452,24 +453,30 @@ def icedburial():
     burial_site_list = burial_query_result[1:,0].astype(str).tolist()
     
     script1,div1 = "", ""
+    var_list = []
+    const_list = []
     
     if request.method == "POST":
         action = request.form.get("action")
 
         if action == "burial_isochron":
+            
+            pretype = 1
 
-            if request.form.get("pretype"):
-                pretype = 0
+            #if request.form.get("pretype"):
+                #pretype = 0
             if request.form.get("no_3sigma"):
                 no_3sigma = 0
             if request.form.get("external_uncertainty"):
                 external_uncertainty = 1
             if request.form.get("force_zero_pb"):
                 force_zero_pb = 1
+            else:
+                force_zero_pb = 0
             if request.form.get("MC_line_plot"):
                 MC_line_plot = 1
             if request.form.get("MC_pt_plot"):
-                MC_line_plot = 1
+                MC_pt_plot = 1
             if request.form.get("plot_inh"):
                 plot_inh = 1
 
@@ -562,7 +569,11 @@ def icedburial():
 
             burial_site = str(request.form.get("burial_site"))
 
-            script1, div1 = plotting.rsl_plot(burial_site)
+            var_list.extend([pretype, no_3sigma, external_uncertainty, force_zero_pb, MC_line_plot, MC_pt_plot, plot_inh])
+            const_list.extend([tau10_mean, tau26_mean, Rsurf_mean, Rpost_mean, rho_mean, Lambda_mean, p10_SLHL_mean, tau10_unc, tau26_unc, Rsurf_unc, Rpost_unc, rho_unc, Lambda_unc, p10_SLHL_unc])
+
+            script1, div1 = pysochronV1_icedburial.pysochron(burial_site, var_list, const_list)
+            #script1, div1 = pysochron_v1_iced(burial_site, pretype, blah blah blah)
 
     return render_template('icedburial.html',
                            script1=script1, div1=div1,
