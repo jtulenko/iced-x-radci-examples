@@ -467,18 +467,33 @@ def icedburial():
                 #pretype = 0
             if request.form.get("no_3sigma"):
                 no_3sigma = 0
+            else:
+                no_3sigma = 1
+
             if request.form.get("external_uncertainty"):
                 external_uncertainty = 1
+            else:
+                external_uncertainty = 0
+
             if request.form.get("force_zero_pb"):
                 force_zero_pb = 1
             else:
                 force_zero_pb = 0
+
             if request.form.get("MC_line_plot"):
                 MC_line_plot = 1
+            else:
+                MC_line_plot = 0
+
             if request.form.get("MC_pt_plot"):
                 MC_pt_plot = 1
+            else:
+                MC_pt_plot = 0
+
             if request.form.get("plot_inh"):
                 plot_inh = 1
+            else:
+                plot_inh = 0
 
 
             if request.form["tau10_mean"]:
