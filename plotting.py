@@ -318,24 +318,6 @@ def geo_map(app_id, path):
         geojson=shoreline_3412.to_json()
     )
 
-    # xs = []
-    # ys = []
-
-    # for geom in shoreline_3412.geometry:
-
-    #     for polygon in geom.geoms:
-
-    #         exterior = polygon.exterior
-
-    #         xs.append(list(exterior.coords.xy[0]))
-    #         ys.append(list(exterior.coords.xy[1]))
-
-    #ds = xr.open_zarr(path, consolidated=True, chunks={})
-
-    #map_x = ds['x'].values
-    #map_y = ds['y'].values
-    #map_z = ds['Band1'].values
-
     core_query = f"""SELECT DISTINCT base_core.lat_DD, base_core.lon_DD, base_core.name
             FROM base_core
             JOIN base_sample ON base_sample.core_id = base_core.id
@@ -362,7 +344,6 @@ def geo_map(app_id, path):
 
 
     p = figure(width=800, height=800, x_range=(-3000000, 3000000), y_range=(-3000000, 3000000),)
-    #p.image(image=[map_z])
     p.patches(
         xs="xs",
         ys="ys",
@@ -371,8 +352,8 @@ def geo_map(app_id, path):
         fill_alpha=0.5,
         line_color="black"
     )
-    p.scatter(x='lon',y='lat', source=data)
-    p.add_tools(HoverTool(tooltips=[("Core name", "@name")]))
+    scatter = p.scatter(x='x', y='y', size=20, source=data)
+    p.add_tools(HoverTool(renderers=[scatter],tooltips=[("Core name", "@sample")]))
 
     plot_script, plot_div = components(p)
 
