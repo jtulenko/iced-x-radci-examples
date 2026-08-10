@@ -308,7 +308,7 @@ def askiced_table(askiced_query):
 def geo_map(app_id):
     app_id = app_id
 
-    core_query = f"""SELECT DISTINCT base_core.lon_DD, base_core.lat_DD, base_core.name
+    core_query = f"""SELECT DISTINCT base_core.lat_DD, base_core.lon_DD, base_core.name
             FROM base_core
             JOIN base_sample ON base_sample.core_id = base_core.id
             JOIN base_sample_application ON base_sample.id = base_sample_application.sample_id
