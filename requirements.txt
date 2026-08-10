@@ -13,4 +13,4 @@ cmcrameri
 dask
 tabulate
 math
-scipy.odr
+scipy
