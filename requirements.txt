@@ -13,3 +13,4 @@ cmcrameri
 dask
 tabulate
 scipy
+xyzservices
