@@ -3,7 +3,7 @@ from scipy.odr import ODR, Model, RealData
 #from matplotlib.patches import Ellipse
 import numpy as np
 from bokeh.plotting import figure, show, ColumnDataSource
-from bokeh.models import Span, HoverTool, ColorBar, LinearColorMapper, GeoJSONDataSource, Ellipse
+from bokeh.models import Span, HoverTool, ColorBar, LinearColorMapper, GeoJSONDataSource, ellipse
 from bokeh.embed import components
 from bokeh.io import output_file, show
 from bokeh.palettes import Viridis256
@@ -420,7 +420,7 @@ def pysochron(burial_core, var_list, const_list):
             if MC_line_plot==1:
                 # ell = Ellipse(xy=[u,v], width=a*2, height=b*2, angle=0,
                 #         edgecolor='none', lw=4, facecolor='white',alpha=0.75,zorder=100)
-                p.add_glyph(Ellipse(x=u,
+                p.add_glyph(ellipse(x=u,
                           y=v,
                           width=a*2,
                           height=a*2,
@@ -430,7 +430,7 @@ def pysochron(burial_core, var_list, const_list):
             else:
                 # ell = Ellipse(xy=[u,v], width=a*2, height=b*2, angle=0,
                 #     edgecolor='none', lw=4, facecolor='white',alpha=0.5,zorder=100)
-                p.Ellipse(x=u,
+                p.ellipse(x=u,
                           y=v,
                           width=a*2,
                           height=a*2,
@@ -518,7 +518,7 @@ def pysochron(burial_core, var_list, const_list):
                 # ell = Ellipse(xy=[u,v], width=a*2, height=b*2, angle=0,
                 #         edgecolor='none', lw=4, facecolor='none')
                 # ax.add_artist(ell)
-                p.Ellipse(x=u,
+                p.ellipse(x=u,
                           y=v,
                           width=a*2,
                           height=a*2,
