@@ -305,8 +305,15 @@ def askiced_table(askiced_query):
 
     return data_table
 
-def geo_map(app_id):
+def geo_map(app_id, path):
     app_id = app_id
+    path = path
+
+    ds = xr.open_zarr(path, consolidated=True, chunks={})
+
+    map_x = ds['x'].values
+    map_y = ds['y'].values
+    map_z = ds['Band1'].values
 
     core_query = f"""SELECT DISTINCT base_core.lat_DD, base_core.lon_DD, base_core.name
             FROM base_core
@@ -334,8 +341,9 @@ def geo_map(app_id):
 
 
     p = figure(width=800, height=800)
+    p.image(image=[map_z])
     p.scatter(x='lon',y='lat', source=data)
-    p.add_tools(HoverTool(tooltips=[("Sample name", "@name")]))
+    p.add_tools(HoverTool(tooltips=[("Core name", "@name")]))
 
     plot_script, plot_div = components(p)
 

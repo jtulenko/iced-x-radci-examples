@@ -608,8 +608,9 @@ def icedradcicures():
 def radciwebmap():
 
     antmarine = 1
+    ant_path = 'gs://iced-x-radci-examples/basemaps/test_Ant.zarr'
 
-    script1, div1 = plotting.geo_map(antmarine)
+    script1, div1 = plotting.geo_map(antmarine, ant_path)
 
     return render_template('radciwebmap.html',
                            script1 = script1, div1 = div1
