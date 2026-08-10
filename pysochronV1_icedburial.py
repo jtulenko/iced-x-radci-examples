@@ -416,7 +416,7 @@ def pysochron(burial_core, var_list, const_list):
             a=Be_unc[i]   
             b=Al_unc[i]  
             t = np.linspace(0, 2*pi, 100)
-            p.line( u+a*np.cos(t) , v+b*np.sin(t),color='black',line_width=0.5,zorder=101)
+            p.line( u+a*np.cos(t) , v+b*np.sin(t),color='black',line_width=0.5)
             if MC_line_plot==1:
                 # ell = Ellipse(xy=[u,v], width=a*2, height=b*2, angle=0,
                 #         edgecolor='none', lw=4, facecolor='white',alpha=0.75,zorder=100)
@@ -524,7 +524,7 @@ def pysochron(burial_core, var_list, const_list):
                           height=a*2,
                           angle=0,
                           line_width=4)
-                p.line(u+a*np.cos(t) , v+b*np.sin(t),color='red',line_width=0.5,zorder=101)
+                p.line(u+a*np.cos(t) , v+b*np.sin(t),color='red',line_width=0.5)
                 flags=flags+1
                 
         # If Al measurement is ABOVE a 2-sigma overlap, note it
