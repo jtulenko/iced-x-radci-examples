@@ -309,11 +309,27 @@ def geo_map(app_id, path):
     app_id = app_id
     path = path
 
-    ds = xr.open_zarr(path, consolidated=True, chunks={})
+    shoreline = gpd.read_file("static/world_shoreline.geojson")
 
-    map_x = ds['x'].values
-    map_y = ds['y'].values
-    map_z = ds['Band1'].values
+    shoreline_3412 = shoreline.to_crs("EPSG:3412")
+
+    xs = []
+    ys = []
+
+    for geom in shoreline_3412.geometry:
+
+        for polygon in geom.geoms:
+
+            exterior = polygon.exterior
+
+            xs.append(list(exterior.coords.xy[0]))
+            ys.append(list(exterior.coords.xy[1]))
+
+    #ds = xr.open_zarr(path, consolidated=True, chunks={})
+
+    #map_x = ds['x'].values
+    #map_y = ds['y'].values
+    #map_z = ds['Band1'].values
 
     core_query = f"""SELECT DISTINCT base_core.lat_DD, base_core.lon_DD, base_core.name
             FROM base_core
@@ -341,7 +357,13 @@ def geo_map(app_id, path):
 
 
     p = figure(width=800, height=800)
-    p.image(image=[map_z])
+    #p.image(image=[map_z])
+    p.multi_line(
+        xs=xs,
+        ys=ys,
+        line_color="black",
+        line_width=1
+    )
     p.scatter(x='lon',y='lat', source=data)
     p.add_tools(HoverTool(tooltips=[("Core name", "@name")]))
 
