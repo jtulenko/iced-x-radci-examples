@@ -16,6 +16,7 @@ from cmcrameri import cm
 import gc
 from tabulate import tabulate
 from pyproj import Transformer
+import json
 
 import dbconnect
 
@@ -313,17 +314,21 @@ def geo_map(app_id, path):
 
     shoreline_3412 = shoreline.to_crs("EPSG:3412")
 
-    xs = []
-    ys = []
+    geo_source = GeoJSONDataSource(
+        geojson=shoreline_3412.to_json()
+    )
 
-    for geom in shoreline_3412.geometry:
+    # xs = []
+    # ys = []
 
-        for polygon in geom.geoms:
+    # for geom in shoreline_3412.geometry:
 
-            exterior = polygon.exterior
+    #     for polygon in geom.geoms:
 
-            xs.append(list(exterior.coords.xy[0]))
-            ys.append(list(exterior.coords.xy[1]))
+    #         exterior = polygon.exterior
+
+    #         xs.append(list(exterior.coords.xy[0]))
+    #         ys.append(list(exterior.coords.xy[1]))
 
     #ds = xr.open_zarr(path, consolidated=True, chunks={})
 
@@ -358,11 +363,13 @@ def geo_map(app_id, path):
 
     p = figure(width=800, height=800)
     #p.image(image=[map_z])
-    p.multi_line(
-        xs=xs,
-        ys=ys,
-        line_color="black",
-        line_width=1
+    p.patches(
+        xs="xs",
+        ys="ys",
+        source=geo_source,
+        fill_color="lightgray",
+        fill_alpha=0.5,
+        line_color="black"
     )
     p.scatter(x='lon',y='lat', source=data)
     p.add_tools(HoverTool(tooltips=[("Core name", "@name")]))
