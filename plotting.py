@@ -348,7 +348,7 @@ def geo_map(app_id):
 
 
     p = figure(width=800, height=800)
-    p.scatter(x='lon',y='lat', source=data, size = 8, fill_color='grey', fill_alpha=0.9, line_color='black', line_alpha=6, marker="circle")
+    p.scatter(x='lon',y='lat', source=data)
     #p.add_tile(xyz.OpenStreetMap.Mapnik)
     p.add_tools(HoverTool(tooltips=[("Sample name", "@name")]))
 
