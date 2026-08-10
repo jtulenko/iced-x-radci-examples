@@ -328,7 +328,7 @@ def pysochron(burial_core, var_list, const_list):
         if all(j <= (Rsurf_mean+Rsurf_unc) for j in dydx) and all(j >= 0 for j in dydx):         
             #plots every MC simulation if enabled
             if MC_line_plot==1:
-                p.plot(n10axis,n26model,'blue',linewidth=0.25,alpha=0.25)     
+                p.line(n10axis,n26model,'blue',line_width=0.25,alpha=0.25)
             if MC_pt_plot==1:
                 p.scatter(Be_MC,Al_MC,marker='.',color='k',s=0.25,alpha=0.5)
             n26model_dist.append(n26model)
@@ -381,7 +381,7 @@ def pysochron(burial_core, var_list, const_list):
         for i in range(len(t_dist)):
             if t_dist[i]>(np.mean(t_dist)+3*np.std(t_dist)) or t_dist[i]<(np.mean(t_dist)-3*np.std(t_dist)) or n10pb_dist[i]>(np.mean(n10pb_dist)+3*np.std(n10pb_dist)) or n10pb_dist[i]<(np.mean(n10pb_dist)-3*np.std(n10pb_dist)):
                 if MC_line_plot==1:
-                    p.plot(n10axis,n26model_dist0[i],'red',linewidth=0.25,alpha=1)
+                    p.line(n10axis,n26model_dist0[i],'red',line_width=0.25,alpha=1)
         
         # Remove 3-sigma t_dist and n10pb_dist outliers
         for i in range(len(t_dist)):
@@ -406,7 +406,7 @@ def pysochron(burial_core, var_list, const_list):
     if MC_line_plot==0:
         #ax.fill_between(n10axis, n26model_2min, n26model_2max, color='lightsteelblue',linewidth=0, alpha=0.25) 
         #ax.fill_between(n10axis, n26model_min, n26model_max, color='lightsteelblue',linewidth=0, alpha=0.5) 
-        p.plot(n10axis,n26model_mean,color='black',linewidth=0.5)
+        p.line(n10axis,n26model_mean,color='black',line_width=0.5)
 
     # Plot sample error ellipses
     if MC_pt_plot==0:
@@ -416,7 +416,7 @@ def pysochron(burial_core, var_list, const_list):
             a=Be_unc[i]   
             b=Al_unc[i]  
             t = np.linspace(0, 2*pi, 100)
-            p.plot( u+a*np.cos(t) , v+b*np.sin(t),color='black',linewidth=0.5,zorder=101)
+            p.line( u+a*np.cos(t) , v+b*np.sin(t),color='black',line_width=0.5,zorder=101)
             if MC_line_plot==1:
                 # ell = Ellipse(xy=[u,v], width=a*2, height=b*2, angle=0,
                 #         edgecolor='none', lw=4, facecolor='white',alpha=0.75,zorder=100)
@@ -524,7 +524,7 @@ def pysochron(burial_core, var_list, const_list):
                           height=a*2,
                           angle=0,
                           line_width=4)
-                p.plot(u+a*np.cos(t) , v+b*np.sin(t),color='red',linewidth=0.5,zorder=101)
+                p.line(u+a*np.cos(t) , v+b*np.sin(t),color='red',line_width=0.5,zorder=101)
                 flags=flags+1
                 
         # If Al measurement is ABOVE a 2-sigma overlap, note it
