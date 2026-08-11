@@ -352,7 +352,7 @@ def geo_map(app_id, path):
         fill_alpha=0.5,
         line_color="black"
     )
-    scatter = p.scatter(x='lon',y='lat', source=data)
+    scatter = p.scatter(x='lon',y='lat', source=data, size=20, fill_color= 'rgba(48, 92, 222, 1)', fill_alpha=0.9, line_color='grey', line_width=0.5)
     p.add_tools(HoverTool(renderers=[scatter], tooltips=[("Core name", "@name")]))
 
     plot_script, plot_div = components(p)
