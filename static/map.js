@@ -1,6 +1,6 @@
 const map = new maplibregl.Map({
     container: 'map',
-    style: 'https://demotiles.maplibre.org/styles/osm-bright-gl-terrain/style.json',
+    style: 'https://tiles.openfreemap.org/styles/liberty',
     center: [0, 20],
     zoom: 1.5
 });
