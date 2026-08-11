@@ -22,13 +22,13 @@
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="https://storage.googleapis.com/iced-x-radci-examples/images/ICED_RADCI_logo.png" type="image/png">
     <link href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" rel="stylesheet">
-    <script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+    
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.7.3.min.js"></script>
       <script type="text/javascript">
           Bokeh.set_log_level("info");
       </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="{{ url_for('static', filename='map.js') }}"></script>
+    
   </head>
 <body>
   <table width = 100%, class="table_alt" style="table-layout: fixed;">
@@ -97,6 +97,8 @@
     <tr>
         <td style="vertical-align: top; text-align: center; padding: 0 10px;">
             <div id="map"></div>
+            <script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+            <script src="{{ url_for('static', filename='map.js') }}"></script>
         </td>
     </tr>
   </table>
