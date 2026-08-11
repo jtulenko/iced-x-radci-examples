@@ -15,16 +15,19 @@ map.on('load', () => {
         .then(response => response.json())
         .then(mapPayload => {
 
+            mapPayload = JSON.parse(mapPayload);
+
+            console.log(mapPayload);
+
             map.addSource('alpine-points', {
                 type: 'geojson',
-                data: mapPayload
+                data: mapPayload.regions
             });
 
             map.addLayer({
                 id: 'alpine-points',
                 type: 'circle',
                 source: 'alpine-points',
-
                 paint: {
                     'circle-radius': 5,
                     'circle-color': '#ff0000',
