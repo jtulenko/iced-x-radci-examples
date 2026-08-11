@@ -21,7 +21,7 @@ map.on('load', () => {
 
             map.addSource('alpine-points', {
                 type: 'geojson',
-                data: mapPayload.regions
+                data: mapPayload.samples
             });
 
             map.addLayer({
