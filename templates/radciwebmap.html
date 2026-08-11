@@ -20,8 +20,11 @@
     <meta charset="utf-8">
     <title>ICE-D & RAD-CI Examples - HOME</title>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
     <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="https://storage.googleapis.com/iced-x-radci-examples/images/ICED_RADCI_logo.png" type="image/png">
+    <link href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" rel="stylesheet">
+    <script src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
     <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.7.3.min.js"></script>
       <script type="text/javascript">
           Bokeh.set_log_level("info");
@@ -80,10 +83,20 @@
     </tr>
   </table>
 
+  <br>
+
   <table width = 100% style="table-layout: fixed;">
     <tr>
-        <td style="text-align: left; padding: 0 10px;">
-            <div style="white-space: pre-wrap;"> {{table_result | safe}} </div>
+      <td style="text-align: left; padding: 0 10px;">
+        <h3>Testing MapLibre</h3>
+      </td>
+    </tr>
+  </table>
+
+  <table width = 100% style="table-layout: fixed;">
+    <tr>
+        <td style="vertical-align: top; text-align: center; padding: 0 10px;">
+            <div id="map"></div>
         </td>
     </tr>
   </table>
