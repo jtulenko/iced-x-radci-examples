@@ -3,5 +3,5 @@ const map = new maplibregl.Map({
     style: 'https://demotiles.maplibre.org/style.json',
     center: [0, 0],
     zoom: 1.5,
-    pitch: 0
+    projection: 'globe'
 });
