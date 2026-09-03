@@ -423,7 +423,7 @@ def pysochron(burial_core, var_list, const_list):
                 p.add_glyph(ellipse(x=u,
                           y=v,
                           width=a*2,
-                          height=a*2,
+                          height=b*2,
                           angle=0,
                           line_width=4)
                 )
@@ -433,7 +433,7 @@ def pysochron(burial_core, var_list, const_list):
                 p.ellipse(x=u,
                           y=v,
                           width=a*2,
-                          height=a*2,
+                          height=b*2,
                           angle=0,
                           line_width=4)
             # ax.add_artist(ell)
@@ -521,7 +521,7 @@ def pysochron(burial_core, var_list, const_list):
                 p.ellipse(x=u,
                           y=v,
                           width=a*2,
-                          height=a*2,
+                          height=b*2,
                           angle=0,
                           line_width=4)
                 p.line(u+a*np.cos(t) , v+b*np.sin(t),color='red',line_width=0.5)
