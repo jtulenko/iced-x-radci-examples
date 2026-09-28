@@ -360,3 +360,16 @@ def geo_map(app_id, path):
     plot_script, plot_div = components(p)
 
     return components(p)
+
+def lms_print():
+    lms_query = """SELECT DISTINCT sample.name AS 'NAME', be_al_data.be_ratio AS 'BE RATIO', be_al_data.be_ratio_err AS 'BE RATIO ERR', be_carrier_std.conc_ppm AS 'BE CARRIER CONC', be_al_data.be_carrier_added_g AS 'BE CARRIER ADDED', sample.qtz_dissolved_g AS 'QTZ DISSOLVED'
+        FROM sample
+        JOIN be_al_data ON sample.id = be_al_data.sample_id
+        JOIN batch ON batch.id = sample.batch_id
+        JOIN be_carrier_std ON be_carrier_std.id = batch.be_carrier_id"""
+    
+    lms_result = dbconnect.querier_lms(lms_query) 
+
+    beal_table = tabulate(lms_result, headers='firstrow', tablefmt='github', showindex=False)
+
+    return beal_table

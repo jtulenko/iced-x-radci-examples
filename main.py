@@ -619,7 +619,10 @@ def radciwebmap():
 @app.route('/lmsprototype')
 def lmsprototype():
 
-    return render_template('lmsprototype.html')
+    table_result = plotting.lms_print()
+
+    return render_template('lmsprototype.html',
+                           table_result=table_result)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
