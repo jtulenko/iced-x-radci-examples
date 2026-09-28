@@ -377,12 +377,12 @@ def lms_print():
     becarrieradded = list_result[1:,4].astype(float)
     qtzdissolved = list_result[1:,5].astype(float)
 
-    data = {'Sample Name': array(name),
-            'Be-10 Ratio': array(beratio),
-            'Be-10 Ratio Error': array(beratioerr),
-            'Be Carrier Conc': array(carrierconc),
-            'Be Carrier Mass Added': array(becarrieradded),
-            'Qtz Mass Dissolved': array(qtzdissolved)
+    data = {'Sample\nName': array(name),
+            'Be-10\nRatio': array(beratio),
+            'Be-10 Ratio\nError': array(beratioerr),
+            'Be Carrier\nConc': array(carrierconc),
+            'Be Carrier\nMass Added': array(becarrieradded),
+            'Qtz Mass\nDissolved': array(qtzdissolved)
     }
 
     avonumber = 6.0221408e+23
@@ -391,8 +391,8 @@ def lms_print():
     be10conc = ((data['Be-10 Ratio']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
     be10concerr = ((data['Be-10 Ratio Error']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
 
-    data['Be-10 Concentration'] = be10conc
-    data['Be-10 Concentration Err'] = be10concerr
+    data['Be-10\nConc'] = be10conc
+    data['Be-10\nConc Err'] = be10concerr
 
     beal_table = tabulate(data, headers='keys', tablefmt='github', showindex=False)
 
