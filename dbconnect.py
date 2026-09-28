@@ -12,7 +12,7 @@ def dbconnect_radci():
     return dbc
 
 def dbconnect_lms():
-    dbc = pymysql.connect(host='34.135.177.27', user='main', password='password10', database='lms_prototype')
+    dbc = pymysql.connect(host='34.135.177.27', user='main', password='Password10', database='lms_prototype')
 
     return dbc
 
