@@ -15,6 +15,12 @@ def dbconnect_radci():
 
     return dbc
 
+def dbconnect_lms():
+
+    dbc = pymysql.connect(host='34.135.177.27', user='main', password='password10', database='lms_prototype')
+
+    return dbc
+
 def querier_iced(input):
     dbc = dbconnect_iced()
     dbcursor = dbc.cursor()
@@ -52,3 +58,23 @@ def querier_radci(input):
     result_list = np.array(headed_result)
 
     return result_list
+
+def querier_lms(input):
+    dbc = dbconnect_lms()
+    dbcursor = dbc.cursor()
+
+    query = input
+
+    dbcursor.execute(query)
+
+    header = [column[0] for column in dbcursor.description]
+    result = dbcursor.fetchall()
+    headed_result = [header] + list(result)
+   
+    dbcursor.close
+    dbc.close
+   
+    result_list = np.array(headed_result)
+
+    return result_list
+
