@@ -368,8 +368,32 @@ def lms_print():
         JOIN batch ON batch.id = sample.batch_id
         JOIN be_carrier_std ON be_carrier_std.id = batch.be_carrier_id"""
     
-    lms_result = dbconnect.querier_lms(lms_query) 
+    list_result = dbconnect.querier_lms(lms_query)
 
-    beal_table = tabulate(lms_result, headers='firstrow', tablefmt='github', showindex=False)
+    name = list_result[1:,0].astype(str)
+    beratio = list_result[1:,1].astype(float)
+    beratioerr = list_result[1:,2].astype(float)
+    carrierconc = list_result[1:,3].astype(float)
+    becarrieradded = list_result[1:,4].astype(float)
+    qtzdissolved = list_result[1:,5].astype(float)
+
+    data = {'Sample Name': array(name),
+            'Be-10 Ratio': array(beratio),
+            'Be-10 Ratio Error': array(beratioerr),
+            'Be Carrier Conc': array(carrierconc),
+            'Be Carrier Mass Added': array(becarrieradded),
+            'Qtz Mass Dissolved': array(qtzdissolved)
+    }
+
+    avonumber = 6.0221408e+23
+    beatomicmass = 9.0121831
+
+    be10conc = ((data['Be-10 Ratio']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
+    be10concerr = ((data['Be-10 Ratio Error']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
+
+    data['Be-10 Concentration'] = be10conc
+    data['Be-10 Concentration Err'] = be10concerr
+
+    beal_table = tabulate(data, headers='keys', tablefmt='github', showindex=False)
 
     return beal_table
