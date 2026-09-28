@@ -2,21 +2,16 @@ import pymysql
 import numpy as np
 
 def dbconnect_iced():
-    #dbc = pymysql.connect(host='localhost',user='reader',password='beryllium-10',database='iced')
-   
     dbc = pymysql.connect(host='34.73.248.9', user='reader', password='beryllium-10',database='iced')
 
     return dbc
 
 def dbconnect_radci():
-    #dbc = pymysql.connect(host='localhost',user='reader',password='beryllium-10',database='iced')
-   
     dbc = pymysql.connect(host='34.28.9.226', user='reader', password='carbon-14',database='mines')
 
     return dbc
 
 def dbconnect_lms():
-
     dbc = pymysql.connect(host='34.135.177.27', user='main', password='password10', database='lms_prototype')
 
     return dbc
