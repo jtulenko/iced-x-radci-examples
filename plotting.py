@@ -388,8 +388,8 @@ def lms_print():
     avonumber = 6.0221408e+23
     beatomicmass = 9.0121831
 
-    be10conc = ((data['Be-10 Ratio']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
-    be10concerr = ((data['Be-10 Ratio Error']) * (avonumber / beatomicmass) * (((data['Be Carrier Conc']) * (data['Be Carrier Mass Added'])) / 1000000)) / (data['Qtz Mass Dissolved'])
+    be10conc = ((data['Be-10\nRatio']) * (avonumber / beatomicmass) * (((data['Be Carrier\nConc']) * (data['Be Carrier\nMass Added'])) / 1000000)) / (data['Qtz Mass\nDissolved'])
+    be10concerr = ((data['Be-10 Ratio\nError']) * (avonumber / beatomicmass) * (((data['Be Carrier\nConc']) * (data['Be Carrier\nMass Added'])) / 1000000)) / (data['Qtz Mass\nDissolved'])
 
     data['Be-10\nConc'] = be10conc
     data['Be-10\nConc Err'] = be10concerr
