@@ -18,7 +18,7 @@ map.on('load', () => {
 
             // API returns JSON encoded as a string,
             // so parse it a second time.
-            mapPayload = JSON.parse(mapPayload);
+            //mapPayload = JSON.parse(mapPayload);
 
             // Add the sample data as a GeoJSON source
             map.addSource('samples', {
