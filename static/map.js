@@ -12,6 +12,63 @@ map.on('load', () => {
         type: 'globe'
     });
 
+    fetch('http://35.226.21.123/api/get_map_geojson/antarctic%20marine?format=json')
+        .then(response => response.json())
+        .then(mapPayload => {
+
+            // API returns JSON encoded as a string,
+            // so parse it a second time.
+            mapPayload = JSON.parse(mapPayload);
+
+            // Add the sample data as a GeoJSON source
+            map.addSource('samples', {
+                type: 'geojson',
+                data: mapPayload.samples
+            });
+
+            // Add sample points
+            map.addLayer({
+                id: 'samples',
+                type: 'circle',
+                source: 'samples',
+                paint: {
+                    'circle-radius': 5,
+                    'circle-color': '#008080',
+                    'circle-opacity': 0.8,
+                    'circle-stroke-color': '#000000',
+                    'circle-stroke-width': 1,
+                    'circle-stroke-opacity': 1
+                }
+            });
+
+            // Change cursor when hovering over a sample
+            map.on('mouseenter', 'samples', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            map.on('mouseleave', 'samples', () => {
+                map.getCanvas().style.cursor = '';
+            });
+
+            // Display all properties when a sample is clicked
+            map.on('click', 'samples', (e) => {
+
+                const properties = e.features[0].properties;
+
+                let popupHTML = '';
+
+                for (const [key, value] of Object.entries(properties)) {
+                    popupHTML += `<strong>${key}:</strong> ${value}<br>`;
+                }
+
+                new maplibregl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setHTML(popupHTML)
+                    .addTo(map);
+            });
+
+        });    
+
     // Load sample data from the API
     fetch('https://version2.ice-d.org/api/leaflet_map/alpine?format=json')
         .then(response => response.json())
