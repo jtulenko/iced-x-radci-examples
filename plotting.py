@@ -23,7 +23,7 @@ import dbconnect
 def rsl_plot(rsl_plot):
     rsl_plot = rsl_plot
 
-    rsl_plot_query = f"""SELECT base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, base_calibratedage.maxage_1sd_calyrBP, base_rsl_info.sealevel_index_elev_m, base_rsl_info.sealevel_index_elev_m_err
+    rsl_plot_query = f"""SELECT base_sample.name, base_calibratedage.age_calyrBP, base_calibratedage.minage_1sd_calyrBP, base_calibratedage.maxage_1sd_calyrBP, base_rsl_info.paleo_sealevel_elev_m, base_rsl_info.paleo_sealevel_elev_m_err
         FROM base_sample
         LEFT JOIN base_calibratedage ON base_sample.id = base_calibratedage.sample_id
         LEFT JOIN base_rsl_info ON base_sample.id = base_rsl_info.sample_id
@@ -38,7 +38,7 @@ def rsl_plot(rsl_plot):
     calmin = site_result[1:,2].astype(float)
     calmax = site_result[1:,3].astype(float)
     elev = site_result[1:,4].astype(float)
-    elev_err = (site_result[1:,5].astype(float)) * 100
+    elev_err = (site_result[1:,5].astype(float))
     elev_min = elev - elev_err
     elev_max = elev + elev_err
 
