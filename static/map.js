@@ -12,7 +12,7 @@ map.on('load', () => {
         type: 'globe'
     });
 
-    fetch('http://35.226.21.123/api/get_map_geojson/antarctic%20marine?format=json')
+    fetch('https://rad-ci.org/api/get_map_geojson/arctic%20dead%20vegetation?format=json')
         .then(response => response.json())
         .then(mapPayload => {
 
