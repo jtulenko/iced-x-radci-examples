@@ -12,6 +12,19 @@ map.on('load', () => {
         type: 'globe'
     });
 
+    map.addSource('terrain-source', {
+        type: 'raster-dem',
+        url: 'https://tiles.mapterhorn.com/tilejson.json',
+        tileSize: 512,
+        encoding: 'terrarium'
+    });
+
+    // Enable 3D terrain
+    map.setTerrain({
+        source: 'terrain-source',
+        exaggeration: 1.5
+    });
+
     fetch('https://rad-ci.org/api/get_map_geojson/arctic%20dead%20vegetation?format=json')
         .then(response => response.json())
         .then(mapPayload => {
